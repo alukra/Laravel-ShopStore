@@ -1,0 +1,34 @@
+/* Add here all your css styles (customizations) */
+.tituloUno {
+	font-size: 60%;
+	line-height: 20%;
+}
+.tituloDos {
+	font-size: 60px;
+	font-style: italic;	
+	font-weight: bold;
+}
+.subtituloUno {
+	font-size: 35px;
+	text-transform: initial;
+}
+.tituloTres {
+	text-transform: initial;
+	font-size: 80%;
+	font-weight: 100;
+}
+.tituloCuatro {
+	font-size: 20px;
+	color: white; 
+	font-weight: bold;
+}
+.subtituloCuatro{
+	color: yellow;
+	font-size: 80%;
+	border: 40px;
+	border-color: white;
+}
+.fondoTrans {
+	background: rgba(0, 0, 0, 0.5);
+
+}
