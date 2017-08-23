@@ -2,6 +2,14 @@
 
 @section ('title') {{ $page_title }} @stop
 
+
+  @section('breadcrumb')
+    <li><a href="{{ url('back/product') }}">Productos</a></li>
+    <li class="active">
+        <strong>{{ $page_title }}</strong>
+    </li>
+  @endsection
+
 @section ('content')
   <div class="wrapper wrapper-content animated fadeInRight ecommerce">
 
@@ -58,6 +66,19 @@
                                                 <option value="{{ $tipo->id }}" selected> {{  $tipo->nombre }} </option>
                                               @else
                                                 <option value="{{ $tipo->id }}"> {{  $tipo->nombre }} </option>
+                                              @endif
+                                            @endforeach
+                                          </select>
+                                        </div>
+                                        <div class="form-group">
+                                          <label class="control-label">Marca</label>
+                                          <select class="form-control m-b" name="marca">
+                                            <option>Seleccione marca</option>
+                                            @foreach ($marcas as $key => $marca)
+                                              @if ($marca->id == $producto->marca_id)
+                                                <option value="{{ $marca->id }}" selected> {{  $marca->nombre }} </option>
+                                              @else
+                                                <option value="{{ $marca->id }}"> {{  $marca->nombre }} </option>
                                               @endif
                                             @endforeach
                                           </select>

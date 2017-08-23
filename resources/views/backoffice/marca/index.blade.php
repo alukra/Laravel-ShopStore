@@ -25,7 +25,7 @@
           <tbody>
             @foreach ($marcas as $key => $marca)
               <tr>
-                <td><img src="{{ asset($marca->url) }}" style="height:50px; width: 50px;"></td>
+                <td><img src="{{ asset($marca->url) }}" style="height:50px; width: auto;"></td>
                 <td>{{ $marca->nombre }}</td>
                 <td>
                   <a class="btn btn-default" href="{{ url('back/brand/' .  $marca->id . "/edit" ) }}"><i class="fa fa-pencil"></i></a>

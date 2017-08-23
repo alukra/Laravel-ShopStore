@@ -2,6 +2,12 @@
 
 @section ('title') {{ $page_title }} @stop
 
+  @section('breadcrumb')
+    <li class="active">
+        <strong>{{ $page_title }}</strong>
+    </li>
+  @endsection
+
 @section ('content')
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -14,6 +20,7 @@
               <th>SKU</th>
               <th>Nombre</th>
               <td>Tipo producto</td>
+              <td>Marca</td>
               <th>Precio</th>
               <th>Stock</th>
               <th>Estado</th>
@@ -26,6 +33,7 @@
                 <td>{{ $producto->sku }}</td>
                 <td>{{ $producto->nombre }}</td>
                 <td>{{ $producto->tipo }}</td>
+                <td>{{ $producto->marca }}</td>
                 <td>{{ $producto->precio }}</td>
                 <td>{{ $producto->stock }}</td>
                 <td>

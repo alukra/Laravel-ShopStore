@@ -3,7 +3,7 @@
 @section ('title') {{ $page_title }} @stop
 
   @section('breadcrumb')
-    <li><a href="{{ url('back/brand') }}">Caracteristicas</a></li>
+    <li><a href="{{ url('back/brand') }}">Marcas</a></li>
     <li class="active">
         <strong>{{ $page_title }}</strong>
     </li>

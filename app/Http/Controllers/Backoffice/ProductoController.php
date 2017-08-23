@@ -14,6 +14,7 @@ use App\Helpers\General;
 use App\Models\Producto;
 use App\Models\Caracteristica;
 use App\Models\Tipo;
+use App\Models\Marca;
 use App\Models\Categoria;
 use App\Models\Imagen;
 
@@ -28,8 +29,9 @@ class ProductoController extends Controller
   public function index() {
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title'] = "Productos";
-    $data['productos'] = Producto::select('producto.*', 'tipo.nombre as tipo')
-              ->join('tipo', 'tipo.id', '=', 'producto.tipo_id')->get();
+    $data['productos'] = Producto::select('producto.*', 'tipo.nombre as tipo', 'marca.nombre as marca')
+              ->join('tipo', 'tipo.id', '=', 'producto.tipo_id')
+              ->join('marca', 'marca.id', '=', 'producto.marca_id')->get();
     return view('backoffice.producto.index')->with($data);
   }
 
@@ -37,6 +39,7 @@ class ProductoController extends Controller
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title'] = "Registrar producto";
     $data['tipos'] = Tipo::all();
+    $data['marcas'] = Marca::all();
     return view('backoffice.producto.create', $data);
   }
 
@@ -47,6 +50,7 @@ class ProductoController extends Controller
       'precio' => 'numeric|required',
       'precio_promocion' => 'numeric',
       'tipo' => 'required',
+      'marca' => 'required'
     ]);
 
     //Inicio de las inserciones en la base de datos
@@ -68,6 +72,7 @@ class ProductoController extends Controller
         $producto->venta = 0;
         $producto->rated = 0;
         $producto->tipo_id = $request->tipo;
+        $producto->marca_id = $request->marca;
         $producto->save();
       } catch (\Exception $e) {
         DB::rollback();
@@ -83,6 +88,7 @@ class ProductoController extends Controller
     $data['page_title']  = "Editar Producto";
     $data['producto'] = Producto::select('producto.*', 'tipo.nombre as tipo')
               ->join('tipo', 'tipo.id', '=', 'producto.tipo_id')
+              ->join('marca', 'marca.id', '=', 'producto.marca_id')
               ->where('producto.id', '=', $id)
               ->first();
 
@@ -110,6 +116,7 @@ class ProductoController extends Controller
 
     //Datos generales
     $data['tipos'] =  Tipo::all();
+    $data['marcas'] = Marca::all();
     $data['categorias'] = Categoria::where('estado', '=', 1)->get();
     $data['caracteristicas'] = Caracteristica::where('estado', '=', 1)->get();
     return view('backoffice.producto.edit', $data);
@@ -124,6 +131,7 @@ class ProductoController extends Controller
       'precio_promocion' => 'numeric',
       'stock' => 'numeric',
       'tipo' => 'required',
+      'marca' => 'required'
     ]);
 
     //Inicio de las inserciones en la base de datos
@@ -155,6 +163,7 @@ class ProductoController extends Controller
           $producto->venta = 0;
         }
         $producto->tipo_id = $request->tipo;
+        $producto->marca_id = $request->marca;
         $producto->save();
       } catch (\Exception $e) {
         DB::rollback();

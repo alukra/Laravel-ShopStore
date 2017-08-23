@@ -2,6 +2,13 @@
 
 @section ('title') {{ $page_title }} @stop
 
+  @section('breadcrumb')
+    <li><a href="{{ url('back/employee') }}">Empleados</a></li>
+    <li class="active">
+        <strong>{{ $page_title }}</strong>
+    </li>
+  @endsection
+
 @section ('content')
 
   <div class="wrapper wrapper-content animated fadeInRight">

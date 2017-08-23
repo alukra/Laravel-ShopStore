@@ -39,7 +39,7 @@ Route::post('back/role-module/asignar-rol', 'Backoffice\AsignarRolController@pos
 Route::Resource('back/employee', 'Backoffice\EmpleadoController', [
       'except' => ['show', 'destroy'] ]);
 Route::Resource('back/detail', 'Backoffice\CaracteristicaController');
-Route::Resource('back/location', 'Backoffice\LocationController', [
+Route::Resource('back/type-product', 'Backoffice\TipoController', [
       'except' => ['show', 'destroy'] ]);
 Route::Resource('back/location', 'Backoffice\LocationController', [
       'except' => ['show', 'destroy'] ]);
