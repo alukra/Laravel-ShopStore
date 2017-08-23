@@ -50,7 +50,8 @@ class ProductoController extends Controller
       'precio' => 'numeric|required',
       'precio_promocion' => 'numeric',
       'tipo' => 'required',
-      'marca' => 'required'
+      'marca' => 'required',
+      'descripcion' => 'required'
     ]);
 
     //Inicio de las inserciones en la base de datos
@@ -73,6 +74,7 @@ class ProductoController extends Controller
         $producto->rated = 0;
         $producto->tipo_id = $request->tipo;
         $producto->marca_id = $request->marca;
+        $producto->descripcion = $request->descripcion;
         $producto->save();
       } catch (\Exception $e) {
         DB::rollback();
@@ -131,7 +133,8 @@ class ProductoController extends Controller
       'precio_promocion' => 'numeric',
       'stock' => 'numeric',
       'tipo' => 'required',
-      'marca' => 'required'
+      'marca' => 'required',
+      'descripcion' => 'required'
     ]);
 
     //Inicio de las inserciones en la base de datos
@@ -164,6 +167,7 @@ class ProductoController extends Controller
         }
         $producto->tipo_id = $request->tipo;
         $producto->marca_id = $request->marca;
+        $producto->descripcion = $request->descripcion;
         $producto->save();
       } catch (\Exception $e) {
         DB::rollback();

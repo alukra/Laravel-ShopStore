@@ -27,27 +27,13 @@
         <div class="row margin-bottom-5">
           <div class="col-sm-4 result-category">
             <h2>Items</h2>
-            <small class="shop-bg-red badge-results">{{ $grid->productos }} filtrados</small>
+            <small class="shop-bg-red badge-results">{{ $grid['productos'] }} filtrados</small>
           </div>
           <div class="col-sm-8">
             <ul class="list-inline clear-both">
               <li class="grid-list-icons">
-                <a href="{{ url($pagina. '/list/'. $grid->id) }}"><i class="fa fa-th-list"></i></a>
-                <a href="{{ url($pagina. '/'. $grid->id) }}"><i class="fa fa-th"></i></a>
-              </li>
-              <li class="sort-list-btn">
-                <h3>Ordenado por :</h3>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Mejores Ventas <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Todo</a></li>
-                    <li><a href="#">Más Vendidas</a></li>
-                    <li><a href="#">Ultimas Ventas Semanales</a></li>
-                    <li><a href="#">Nuevas Llegadas</a></li>
-                  </ul>
-                </div>
+                <a href="{{ url('products/list/'. $grid['tipo'] . '/' . $grid['categoria']. '/' . $grid['marca']) }}"><i class="fa fa-th-list"></i></a>
+                <a href="{{ url('products/'. $grid['tipo'] . '/' . $grid['categoria']. '/' . $grid['marca']) }}"><i class="fa fa-th"></i></a>
               </li>
             </ul>
           </div>
@@ -90,6 +76,8 @@
                     <a href="{{ url('product-detail/' . $producto->id ) }}">
                       <span class="gender text-uppercase"><b>Tipo:</b> {{ $producto->tipo }}</span>
                     </a>
+                    <span class="gender text-uppercase"><b>Marca:</b> {{ $producto->marca }}</span>
+                    <span class="gender"><b>descripción</b> {{ $producto->descripcion }}  </span>
                   </p>
                   <br><br><br>
                   </div>

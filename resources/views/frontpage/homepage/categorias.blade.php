@@ -9,7 +9,7 @@
   @foreach ($categorias as $key => $categoria)
     <div class="col-md-4 md-margin-bottom-30">
       <div class="overflow-h">
-        <a class="illustration-v3" href="{{ url('category/'. $categoria->id ) }}" style="background-image: url({{ $categoria->url }});" >
+        <a class="illustration-v3" href="{{ url('products/0/'. $categoria->id. '/0' ) }}" style="background-image: url({{ $categoria->url }});" >
           <span class="illustration-bg">
             <span class="illustration-ads">
               <span class="illustration-v3-category">

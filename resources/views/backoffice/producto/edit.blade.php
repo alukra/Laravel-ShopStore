@@ -83,6 +83,7 @@
                                             @endforeach
                                           </select>
                                         </div>
+                                        <div class="form-group"><label>Descripción</label> <textarea name="descripcion" rows="4" cols="80" class="form-control">{{ $producto->descripcion }}</textarea></div>
                                         <div class="form-group">
                                           <label class="checkbox-inline">Liquidación</label>
                                           @if ($producto->liquidacion == 1)

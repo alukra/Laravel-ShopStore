@@ -39,8 +39,6 @@
       <div class="row">
 
         <div class="col-md-6 md-margin-bottom-50">
-          <img class="full-width img-responsive" src="{{ asset( $imagenes[0]->url ) }}">
-          {{--
           <div class="ms-showcase2-template">
             <!-- Master Slider -->
             <div class="master-slider ms-skin-default" id="masterslider">
@@ -53,16 +51,16 @@
             </div>
             <!-- End Master Slider -->
           </div>
-            --}}
         </div>
         <div class="col-md-6">
           <div class="shop-product-heading">
+            <img src="{{ asset($marca->url) }}" width="100px" align="left">
             <h2> {{ $producto->nombre }}</h2>
-            <ul class="list-inline shop-product-social">
+            {{-- <ul class="list-inline shop-product-social">
               <li><a href="#" title="Conmparte"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#" title="Conmparte"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#" title="Conmparte"><i class="fa fa-instagram"></i></a></li>
-            </ul>
+            </ul> --}}
           </div><!--/end shop product social-->
 
           <ul class="list-inline product-ratings margin-bottom-30">
@@ -71,9 +69,9 @@
             <li><i class="rating-selected fa fa-star"></i></li>
             <li><i class="rating-selected fa fa-star"></i></li>
             <li><i class="rating fa fa-star"></i></li>
-            <li class="product-review-list">
+            {{-- <li class="product-review-list">
               <span><a href="#comment">Comentarios</a> | <a href="#detail"> Datos</a></span>
-            </li>
+            </li> --}}
           </ul><!--/end shop product ratings-->
 
           @foreach ($caracteristicas_p as $key => $cp)
@@ -111,7 +109,7 @@
             </li>
           </ul><!--/end product size-->
 
-          <h3 class="shop-product-title">Cantidad</h3>
+          {{-- <h3 class="shop-product-title">Cantidad</h3>
           <div class="margin-bottom-40">
             <form name="f1" class="product-quantity sm-margin-bottom-20">
               <button type='button' class="quantity-button" name='subtract' onclick='javascript: subtractQty();' value='-'>-</button>
@@ -130,10 +128,10 @@
               <i class="fa fa-exchange"></i>
               <a href="#">Comparar</a>
             </li>
-          </ul>
+          </ul> --}}
           <p class="wishlist-category"><strong>Categorias:</strong>
             @foreach ($categorias as $key => $categoria)
-              <a href="{{ url('category/'. $categoria->id ) }}">{{ $categoria->nombre }} </a>
+              <a href="{{ url('products/0/'. $categoria->id . '/0' ) }}">{{ $categoria->nombre }} </a>
             @endforeach
           </p>
         </div>
@@ -145,14 +143,15 @@
   <div class="content-md container">
     <!--=== Product Service ===-->
   <div class="row margin-bottom-60">
+    <div class="row margin-bottom-60">
     <div class="col-md-4 product-service md-margin-bottom-30">
       <div class="product-service-heading">
         <i class="fa fa-wrench"></i>
       </div>
       <div class="product-service-in">
-        <h3>El Mejor Taller</h3>
-        <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
-        <a href="#">+Leer más</a>
+        <h3>Centró Técnico Especialista en Laptops</h3>
+        <p class="text-justify">Nuestro Centro Técnico especialista es #1 en reparación de fallas a nivel de MICROELECTRÓNICA en El Salvador. Esos nos hace ÚNICOS.</p>
+        <a href="http://www.laptopsvaldez.com/" target="_blank">+Leer más</a>
       </div>
     </div>
     <div class="col-md-4 product-service md-margin-bottom-30">
@@ -161,7 +160,7 @@
       </div>
       <div class="product-service-in">
         <h3>Servicio al CLiente</h3>
-        <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
+        <p class="text-justify">¿Necesitas cotizar ó más información de nuestros productos? Chatea con nosotros. Abajo a la derecha esta nuestro chat.</p>
         <a href="#">+Leer más</a>
       </div>
     </div>
@@ -171,10 +170,11 @@
       </div>
       <div class="product-service-in">
         <h3>Garantia Extendida</h3>
-        <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
+        <p class="text-justify">Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta.</p>
         <a href="#">+Leer más</a>
       </div>
     </div>
+  </div>
   </div><!--/end row-->
   <!--=== End Product Service ===-->
 
@@ -188,25 +188,18 @@
         <!-- Description -->
         <div class="tab-pane fade in active" id="description">
           <div class="row">
-            <div class="col-md-7">
-              <p>Morbi non semper est, eget tincidunt turpis. Vivamus sollicitudin sodales nisi, et venenatis turpis Vivamus sollicitudin ultricies eget. Fusce vitae neque blandit lectus faucibus aliquet nec vel ipsum. Integer mattis lacinia felis vel sollicitudin molestie.</p><br>
+            <div class="col-md-12">
+              <p>{{ $producto->descripcion }}</p><br>
 
               <h3 class="heading-md margin-bottom-20">ESPECIFICACIONES</h3>
               <div class="row">
                 <div class="col-sm-12">
-                  <ul class="list-unstyled specifies-list">
+                  <ul class="list-unstyled specifies-list" style="ul {-webkit-column-count: 2;  -moz-column-count: 3;  column-count: 3;}">
                     @foreach ($caracteristicas as $key => $caracteristica)
                       <li><i class="fa fa-caret-right"></i>{{ $caracteristica->nombre }}: <span> {{ $caracteristica->descripcion }}</span></li>
                     @endforeach
                   </ul>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="responsive-video">
-                <video src="{{ asset('frontpage/video/vmMejores2017.mp4') }}  " loops controls width="100%">
-                              Tu navegador no soporta el formato de video de Valdez Mobile
-                          </video>
               </div>
             </div>
           </div>
@@ -280,13 +273,11 @@
 @endsection
 
 @section('cssExtras')
-  {{--
 	<link rel="stylesheet" href="{{ asset('frontpage/plugins/master-slider/masterslider/style/masterslider.css')}}">
-	<link rel='stylesheet' href="{{ asset('frontpage/plugins/master-slider/masterslider/skins/default/style.css')}}">--}}
+	<link rel='stylesheet' href="{{ asset('frontpage/plugins/master-slider/masterslider/skins/default/style.css')}}">
 @endsection
 
 @section('scriptsExtras')
-  {{--
   <!-- Master Slider -->
   <script src="{{ asset('frontpage/plugins/master-slider/masterslider/masterslider.min.js')}}"></script>
   <script src="{{ asset('frontpage/plugins/master-slider/masterslider/jquery.easing.min.js')}}"></script>
@@ -299,5 +290,5 @@
   			StyleSwitcher.initStyleSwitcher();
   			MasterSliderShowcase2.initMasterSliderShowcase2();
   		});
-  </script> --}}
+  </script>
 @endsection

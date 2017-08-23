@@ -14,12 +14,10 @@
 //** Homepage
 Auth::routes();
 Route::get('/', 'Frontpage\HomepageController@getIndex');
-Route::get('products/{type}/{category}/{order}', 'Frontpage\HomepageController@getProducts');
-Route::get('category/{id}', 'Frontpage\HomepageController@getCategoryGrid');
-Route::get('category/list/{id}', 'Frontpage\HomepageController@getCategoryList');
-Route::get('type/{id}', 'Frontpage\HomepageController@getTypeGrid');
-Route::get('type/list/{id}', 'Frontpage\HomepageController@getTypeList');
+Route::get('products/{type}/{category}/{brand}', 'Frontpage\HomepageController@getProducts');
+Route::get('products/list/{type}/{category}/{brand}', 'Frontpage\HomepageController@getProductsList');
 Route::get('product-detail/{id}', 'Frontpage\HomepageController@getProduct');
+Route::post('filter', 'Frontpage\HomepageController@postFilter');
 //Route::get('location', 'Frontpage\LocationController@getIndex');
 Route::get('location/{id}', 'Frontpage\LocationController@getLocation');
 //Route::get('news', 'Frontpage\LandingController@getIndex' );
@@ -54,3 +52,4 @@ Route::get('back/product-more/destroy-detail/{id}/{caracteristica}', 'Backoffice
 Route::post('back/product-more/store-image/{id}', 'Backoffice\ProductoDetallesController@storeImage');
 Route::get('back/product-more/destroy-image/{id}/{imagen}', 'Backoffice\ProductoDetallesController@destroyImage');
 Route::get('back/product-more/update-image/{id}/{imagen}', 'Backoffice\ProductoDetallesController@updateImage');
+Route::get('back/suscriber', 'Backoffice\DashboardController@getSuscribe');

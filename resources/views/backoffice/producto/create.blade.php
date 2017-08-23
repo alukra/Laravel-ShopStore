@@ -60,6 +60,7 @@
                 @endforeach
               </select>
             </div>
+            <div class="form-group"><label>Descripción</label> <textarea name="descripcion" rows="4" cols="80" class="form-control"></textarea></div>
             <div>
                 <button class="btn btn-primary m-t-n-xs" type="submit"><strong>Guardar</strong></button>
             </div>
