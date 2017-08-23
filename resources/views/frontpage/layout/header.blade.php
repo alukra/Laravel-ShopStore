@@ -130,73 +130,10 @@
 									<div class="container">
 										<div class="row">
 
-											<div class="col-md-2 col-sm-6">
-												<h3 class="mega-menu-heading">HP</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="producto.php?id_producto=3">EliteBook</a> <span class="label label-danger-shop">Nuevo</span></li>
-													<li><a href="producto.php?id_producto=14">ProBook</a></li>
-												</ul>
+											<?php use App\Services\NavbarMarcas; ?>
+					            {!! NavbarMarcas::create() !!}
 
-											</div>
-
-											<div class="col-md-2 col-sm-6">
-												<h3 class="mega-menu-heading">Lenovo</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="producto.php?id_producto=16">ThinkPad</a></li>
-													<li><a href="producto.php?id_producto=17">Thinkcentre</a></li>
-												</ul>
-												<!-- <h3 class="mega-menu-heading">Acer</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="producto.php?id_producto=">Aspire</a> <span class="label label-danger-shop">Nuevo</span></li>
-												</ul> -->
-											</div>
-											<div class="col-md-2 col-sm-6">
-												<h3 class="mega-menu-heading">TOSHIBA</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="producto.php?id_producto=15">Satellite</a> <span class="label label-danger-shop">Nuevo</span></li>
-													<li><a href="producto.php?id_producto=15">Tecra</a></li>
-												</ul>
-												<!-- <h3 class="mega-menu-heading">Asus</h3>
-												 <ul class="list-unstyled style-list">
-													<li><a href="#">Chromebook</a></li>
-												</ul>  -->
-											</div>
-											<div class="col-md-2 col-sm-6">
-												<h3 class="mega-menu-heading">Dell</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="producto.php?id_producto=11">Latitude</a> <span class="label label-danger-shop">Nuevo</span></li>
-													<li><a href="producto.php?id_producto=18">XPS</a></li>
-													<li><a href="producto.php?id_producto=13">Inspiron</a></li>
-												</ul>
-												<!-- <h3 class="mega-menu-heading"><i class="fa fa-apple fa-fw"></i> Mac</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="">MacBook</a></li>
-													<li><a href="">MacBook Air</a></li>
-													<li><a href="">MacBook Pro</a></li>
-													<li><a href="">iMac</a></li>
-												</ul>
-												<h3 class="mega-menu-heading"><i class="fa fa-apple fa-fw"></i> iPad</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="">iPad Pro</a></li>
-													<li><a href="">iPad</a></li>
-													<li><a href="">iPad mini</a></li>
-												</ul> -->
-											</div>
-											<div class="col-md-2 col-sm-6">
-												<!-- <h3 class="mega-menu-heading"><i class="fa fa-apple fa-fw"></i> iPhone</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="">iPhone 6s</a> <span class="label label-danger-shop">Nuevo</span></li>
-													<li><a href="">iPhone SE</a></li>
-													<li><a href="">iWatch</a></li>
-												</ul>
-												<h3 class="mega-menu-heading">SAMSUMG</h3>
-												<ul class="list-unstyled style-list">
-													<li><a href="producto.php?id_producto=">Samsung Gear</a></li>
-												</ul> -->
-
-											</div>
-
-											<div class="col-md-2 col-sm-6">
+											<div class="col-md-4 col-sm-6">
 												<h3 class="mega-menu-heading"><i class="fa fa-wrench fa-fw"></i> Servicios</h3>
 												<ul class="list-unstyled style-list">
 													<li><a href="http://www.laptopsvaldez.com/reparacion-de-laptops" target="_blank">Reparación de Laptops</a></li>

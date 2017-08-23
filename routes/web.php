@@ -20,7 +20,7 @@ Route::get('product-detail/{id}', 'Frontpage\HomepageController@getProduct');
 Route::post('filter', 'Frontpage\HomepageController@postFilter');
 //Route::get('location', 'Frontpage\LocationController@getIndex');
 Route::get('location/{id}', 'Frontpage\LocationController@getLocation');
-//Route::get('news', 'Frontpage\LandingController@getIndex' );
+Route::get('news', 'Frontpage\LandingController@getIndex' );
 Route::post('suscribe', 'Frontpage\HomepageController@postSuscribe');
 
 
@@ -53,3 +53,4 @@ Route::post('back/product-more/store-image/{id}', 'Backoffice\ProductoDetallesCo
 Route::get('back/product-more/destroy-image/{id}/{imagen}', 'Backoffice\ProductoDetallesController@destroyImage');
 Route::get('back/product-more/update-image/{id}/{imagen}', 'Backoffice\ProductoDetallesController@updateImage');
 Route::get('back/suscriber', 'Backoffice\DashboardController@getSuscribe');
+Route::Resource('back/landing', 'Backoffice\LandingController');

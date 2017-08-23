@@ -194,7 +194,7 @@
               <h3 class="heading-md margin-bottom-20">ESPECIFICACIONES</h3>
               <div class="row">
                 <div class="col-sm-12">
-                  <ul class="list-unstyled specifies-list" style="ul {-webkit-column-count: 2;  -moz-column-count: 3;  column-count: 3;}">
+                  <ul class="list-unstyled specifies-list" style=" {-webkit-column-count: 2;  -moz-column-count: 3;  column-count: 3;}">
                     @foreach ($caracteristicas as $key => $caracteristica)
                       <li><i class="fa fa-caret-right"></i>{{ $caracteristica->nombre }}: <span> {{ $caracteristica->descripcion }}</span></li>
                     @endforeach
