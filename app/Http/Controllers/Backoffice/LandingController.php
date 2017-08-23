@@ -143,13 +143,102 @@ class LandingController extends Controller
     return redirect('back/landing');
   }
 
-  // public function edit($id){
-  //   $data['user_perfil'] = Session()->get('perfil');
-  //   $data['page_title']  = "Editar landing";
-  //   $data['categoria'] =  Landing::find($id);
-  //   $data['imagen'] = Imagen::find( $data['categoria']->imagen_id );
-  //   if ($data['categoria']  == null) { return redirect('back/category'); } //Verificación para evitar errores
-  //   return view('backoffice.categoria.edit', $data);
-  // }
+  public function edit($id){
+    $data['user_perfil'] = Session()->get('perfil');
+    $data['page_title']  = "Editar landing";
+    $data['landing'] =  Landing::find($id);
+    $data['celimg'] = Imagen::find( $data['landing']->celimg_id );
+    $data['tabimg'] = Imagen::find( $data['landing']->tabimg_id );
+    $data['comimg'] = Imagen::find( $data['landing']->comimg_id );
+    $data['img2'] = Imagen::find( $data['landing']->img2_id );
+    if ($data['landing']  == null) { return redirect('back/landing'); } //Verificación para evitar errores
+    return view('backoffice.landing.edit', $data);
+  }
+
+    public function update($id, Request $request){    //Tablas a actualizar
+      $this->validate($request, [
+        'nombre' => 'max:32|required',
+        'txtp1' => 'required',
+        'txtp2' => 'required',
+        'txts1p1' => 'required',
+        'txts2p1' => 'required',
+        'txts1p2' => 'required',
+        'txts2p2' => 'required'
+      ]);
+
+      //Inicio de las inserciones en la base de datos
+      DB::beginTransaction();
+        try {
+          //Guardado de la cuenta del usuario
+          $landing = Landing::find( $id );
+          $landing->nombre = $request->nombre;
+          $landing->txtp1 = $request->txtp1;
+          $landing->txts1p1 = $request->txts1p1;
+          $landing->txts2p1 = $request->txts2p1;
+          $landing->txtp2 = $request->txtp2;
+          $landing->txts1p2 = $request->txts1p2;
+          $landing->txts2p2 = $request->txts2p2;
+          $landing->save();
+        } catch (\Exception $e) {
+          DB::rollback();
+          throw $e;
+        }
+
+        $url = 'images/landing/landing'. $landing->id;
+
+        if ($request->hasFile('celimg')) {
+          $celimg = $landing->id . time() . 'celimg.' . $request->file('celimg')->getClientOriginalExtension();
+          if ($request->file('celimg')->isValid()) {
+            $request->file('celimg')->move( base_path() . '/public/' . $url , $celimg );
+            $celimg_f = new Imagen();
+            $celimg_f->url = $url . '/' . $celimg;
+            $celimg_f->save();
+
+            $landing->celimg_id = $celimg_f->id;
+            $landing->save();
+          }
+        }
+
+        if ($request->hasFile('tabimg')) {
+          $tabimg = $landing->id . time() . 'tabimg.' . $request->file('tabimg')->getClientOriginalExtension();
+          if ($request->file('tabimg')->isValid()) {
+            $request->file('tabimg')->move( base_path() . '/public/' . $url , $tabimg );
+            $tabimg_f = new imagen();
+            $tabimg_f->url = $url . '/' . $tabimg;
+            $tabimg_f->save();
+
+            $landing->tabimg_id = $tabimg_f->id;
+            $landing->save();
+          }
+        }
+
+        if ($request->hasFile('comimg')) {
+          $comimg = $landing->id . time() . 'comimg.' . $request->file('comimg')->getClientOriginalExtension();
+          if ($request->file('coming')->isValid()) {
+            $request->file('coming')->move( base_path() . '/public/' . $url , $coming );
+            $coming_f = new imagen();
+            $coming_f->url = $url . '/' . $coming;
+            $coming_f->save();
+
+            $landing->coming_id = $coming_f->id;
+            $landing->save();
+          }
+        }
+
+        if ($request->hasFile('img2')) {
+          $img2 = $landing->id . time() . 'img2.' . $request->file('img2')->getClientOriginalExtension();
+          if ($request->file('img2')->isValid()) {
+            $request->file('img2')->move( base_path() . '/public/' . $url , $img2 );
+            $img2 = new imagen();
+            $img2->url = $url . '/' . $img2;
+            $img2->save();
+
+            $landing->img2_id = $img2->id;
+            $landing->save();
+          }
+        }
+       DB::commit();
+       return redirect('back/landing/'. $id . "/edit");
+    }
 
 }
