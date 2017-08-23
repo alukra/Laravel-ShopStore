@@ -41,6 +41,8 @@ class LocationController extends Controller
       'nombre' => 'max:64|required',
       'coordx' => 'required',
       'coordy' => 'required',
+      'coordx_m' => 'required',
+      'coordy_m' => 'required',
       'direccion' => 'required',
       'telefono' => 'required'
     ]);
@@ -53,6 +55,8 @@ class LocationController extends Controller
         $ubicacion->nombre = $request->nombre;
         $ubicacion->coord_x = $request->coordx;
         $ubicacion->coord_y = $request->coordy;
+        $ubicacion->latitud_mapa = $request->coordx_m;
+        $ubicacion->longitud_mapa = $request->coordy_m;
         $ubicacion->direccion = $request->direccion;
         $ubicacion->telefono = $request->telefono;
         if ($request->has('horario1')) {
@@ -87,6 +91,8 @@ class LocationController extends Controller
       'nombre' => 'max:64|required',
       'coordx' => 'required',
       'coordy' => 'required',
+      'coordx_m' => 'required',
+      'coordy_m' => 'required',
       'direccion' => 'required',
       'telefono' => 'required'
     ]);
@@ -99,6 +105,8 @@ class LocationController extends Controller
         $ubicacion->nombre = $request->nombre;
         $ubicacion->coord_x = $request->coordx;
         $ubicacion->coord_y = $request->coordy;
+        $ubicacion->latitud_mapa = $request->coordx_m;
+        $ubicacion->longitud_mapa = $request->coordy_m;
         $ubicacion->direccion = $request->direccion;
         $ubicacion->telefono = $request->telefono;
         if ($request->has('horario1')) {

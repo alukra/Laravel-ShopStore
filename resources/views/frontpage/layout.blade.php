@@ -91,7 +91,7 @@
     <script src="{{ asset('frontpage/js/plugins/owl-carousel.js')}}"></script>
     <script src="{{ asset('frontpage/js/plugins/revolution-slider.js')}}"></script>
     <script src="{{ asset('frontpage/js/plugins/style-switcher.js')}}"></script>
-    @section('scriptsExtras')
+    @yield('scriptsExtras')
     <script>
     	jQuery(document).ready(function() {
     		App.init();

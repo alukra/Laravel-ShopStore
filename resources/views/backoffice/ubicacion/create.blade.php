@@ -27,8 +27,10 @@
         <form role="form" method="post" action="{{ url('back/location') }}" enctype="multipart/form-data">
              {{ csrf_field() }}
             <div class="form-group"><label>Nombre</label> <input type="text" placeholder="Nombre" class="form-control" name="nombre"></div>
-            <div class="form-group"><label>Coordenada x</label> <input type="text" placeholder="Coordenada x" class="form-control" name="coordx"></div>
-            <div class="form-group"><label>Coordenada y</label> <input type="text" placeholder="Coordenada y" class="form-control" name="coordy"></div>
+            <div class="form-group"><label>Latitud</label> <input type="text" placeholder="Latitud" class="form-control" name="coordx"></div>
+            <div class="form-group"><label>Longitud</label> <input type="text" placeholder="Longitud" class="form-control" name="coordy"></div>
+            <div class="form-group"><label>Latitud Mapa</label> <input type="text" placeholder="Latitud mapa" class="form-control" name="coordx_m"></div>
+            <div class="form-group"><label>Longitud Mapa</label> <input type="text" placeholder="Longitud mapa" class="form-control" name="coordy_m"></div>
             <div class="form-group"><label>Dirección</label> <textarea name="direccion" rows="8" cols="80" class="form-control"></textarea></div>
             <div class="form-group"><label>Télefono</label>
               <input type="text" placeholder="Télefono"  class="form-control" data-mask="(999)-9999-9999" name="telefono">
