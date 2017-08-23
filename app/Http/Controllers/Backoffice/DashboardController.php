@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Modulo;
 use App\Models\Modulo_seccion;
+use App\Models\Suscripcion;
 
 class DashboardController extends Controller
 {
@@ -42,5 +43,12 @@ class DashboardController extends Controller
                 ->orderBy('orden', 'asc')
                 ->get();
       return view('backoffice.dashboard', $data);
+    }
+
+    public function getSuscribe(Request $request){
+      $data['user_perfil'] = Session()->get('perfil');
+      $data['page_title'] = "Suscriptores";
+      $data['suscriptores'] = Suscripcion::all();
+      return view('backoffice.clientes.suscripcion')->with($data);
     }
 }
