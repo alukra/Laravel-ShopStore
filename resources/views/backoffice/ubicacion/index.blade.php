@@ -14,32 +14,27 @@
   <div class="row">
     <div class="ibox-content">
       <div class="table-responsive">
-        <table id="tblcategoria" class="table table-bordered table-striped">
+        <table id="tblubicacion" class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Imagen</th>
               <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Dirección</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($categorias as $key => $categoria)
+            @foreach ($ubicaciones as $key => $ubicacion)
               <tr>
-                <td><img src="{{ asset($categoria->url) }}" style="height:50px; width: 50px;"></td>
-                <td>{{ $categoria->nombre }}</td>
-                <td>
-                  <a class="btn btn-default" href="{{ url('back/category/' .  $categoria->id . "/edit" ) }}"><i class="fa fa-pencil"></i></a>
-                  @if ($categoria->estado == 1)
-                    <a class="btn btn-primary" href="{{ url('back/category/' .  $categoria->id ) }}"><i class="fa fa-circle-o-notch"></i></a>
-                  @else
-                    <a class="btn btn-default" href="{{ url('back/category/' .  $categoria->id ) }}"><i class="fa fa-circle-o-notch"></i></a>
-                  @endif
-                </td>
+                <td>{{ $ubicacion->nombre }}</td>
+                <td>{{ $ubicacion->telefono }}</td>
+                <td>{{ $ubicacion->direccion }}</td>
+                <td><a class="btn btn-default" href="{{ url('back/location/' .  $ubicacion->id . "/edit" ) }}"><i class="fa fa-pencil"></i></a>  </td>
               </tr>
             @endforeach
           </tbody>
         </table>
-        <a href="{{ url('back/category/create') }}" class="btn btn-default">Nuevo</a>
+        <a href="{{ url('back/location/create') }}" class="btn btn-default">Nuevo</a>
       </div>
     </div>
   </div>
@@ -54,7 +49,7 @@
 	<script src="{{ asset('backoffice/js/dataTables/datatables.min.js')}}"></script>
 	<script>
     //Datatable
-    var tabla = $('#tblcategoria').DataTable({
+    var tabla = $('#tblubicacion').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": true,

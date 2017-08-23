@@ -21,7 +21,7 @@ Route::get('type/{id}', 'Frontpage\HomepageController@getTypeGrid');
 Route::get('type/list/{id}', 'Frontpage\HomepageController@getTypeList');
 Route::get('product-detail/{id}', 'Frontpage\HomepageController@getProduct');
 //Route::get('location', 'Frontpage\LocationController@getIndex');
-//Route::get('location/{id}', 'Frontpage\LocationController@getLocation');
+Route::get('location/{id}', 'Frontpage\LocationController@getLocation');
 //Route::get('news', 'Frontpage\LandingController@getIndex' );
 Route::post('suscribe', 'Frontpage\HomepageController@postSuscribe');
 
@@ -39,7 +39,11 @@ Route::post('back/role-module/asignar-rol', 'Backoffice\AsignarRolController@pos
 Route::Resource('back/employee', 'Backoffice\EmpleadoController', [
       'except' => ['show', 'destroy'] ]);
 Route::Resource('back/detail', 'Backoffice\CaracteristicaController');
-Route::Resource('back/type-product', 'Backoffice\TipoController',
+Route::Resource('back/location', 'Backoffice\LocationController', [
+      'except' => ['show', 'destroy'] ]);
+Route::Resource('back/location', 'Backoffice\LocationController', [
+      'except' => ['show', 'destroy'] ]);
+Route::Resource('back/brand', 'Backoffice\MarcaController',
 ['except' => ['show'] ]);
 Route::Resource('back/category', 'Backoffice\CategoriaController');
 Route::Resource('back/product', 'Backoffice\ProductoController');

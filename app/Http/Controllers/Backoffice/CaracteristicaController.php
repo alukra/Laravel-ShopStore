@@ -23,7 +23,7 @@ class CaracteristicaController extends Controller
 
   public function index() {
     $data['user_perfil'] = Session()->get('perfil');
-    $data['page_title'] = "Caractesticas de Productos";
+    $data['page_title'] = "Caracteristicas de Productos";
     $data['caracteristicas'] = Caracteristica::all();
     return view('backoffice.caracteristica.index')->with($data);
   }
@@ -38,7 +38,7 @@ class CaracteristicaController extends Controller
   public function store(Request $request){
 
     $this->validate($request, [
-      'nombre' => 'max:32|required|regex:/^[A-Za-z ñáéíóú\s]+$/',
+      'nombre' => 'max:32|required',
     ]);
 
     //Inicio de las inserciones en la base de datos
@@ -47,6 +47,11 @@ class CaracteristicaController extends Controller
         //Guardado de la cuenta del usuario
         $caracteristica = new Caracteristica();
         $caracteristica->nombre = $request->nombre;
+        if ($request->has('principal') ) {
+          $caracteristica->principal = 1;
+        }else {
+          $caracteristica->principal = 0;
+        }
         $caracteristica->save();
       } catch (\Exception $e) {
         DB::rollback();
@@ -81,7 +86,8 @@ class CaracteristicaController extends Controller
 
     $caracteristica = Caracteristica::find($id);
     $this->validate($request, [
-      'nombre' => 'max:32|required|regex:/^[A-Za-z ñáéíóú\s]+$/',
+      'nombre' => 'max:32|required',
+      'orden' => 'required'
     ]);
 
     //Inicio de las inserciones en la base de datos
@@ -89,6 +95,12 @@ class CaracteristicaController extends Controller
       try {
         //Guardado de la cuenta del usuario
         $caracteristica->nombre = $request->nombre;
+        if ($request->has('principal') ) {
+          $caracteristica->principal = 1;
+        }else {
+          $caracteristica->principal = 0;
+        }
+        $caracteristica->orden = $request->orden;
         $caracteristica->save();
       } catch (\Exception $e) {
         DB::rollback();

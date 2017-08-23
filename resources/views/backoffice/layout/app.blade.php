@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{!! csrf_token() !!}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <title>Valdez Mobile - @yield('title') </title>
     <link rel="stylesheet" href="{!! asset('backoffice/css/vendor.css') !!}" />
     <link rel="stylesheet" href="{!! asset('backoffice/css/app.css') !!}" />
@@ -27,6 +28,10 @@
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>@yield('title') </h2>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('back/dashboard') }}">Inicio</a></li>
+                        @yield('breadcrumb')
+                    </ol>
                 </div>
                 <div class="col-lg-2">
 

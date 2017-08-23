@@ -3,7 +3,7 @@
 @section ('title') {{ $page_title }} @stop
 
   @section('breadcrumb')
-    <li><a href="{{ url('back/category') }}">Caracteristicas</a></li>
+    <li><a href="{{ url('back/brand') }}">Caracteristicas</a></li>
     <li class="active">
         <strong>{{ $page_title }}</strong>
     </li>
@@ -24,7 +24,7 @@
                 </ul>
             </div>
         @endif
-        <form role="form" method="post" action="{{ url('back/category') }}" enctype="multipart/form-data">
+        <form role="form" method="post" action="{{ url('back/brand') }}" enctype="multipart/form-data">
              {{ csrf_field() }}
             <div class="form-group"><label>Nombre</label> <input type="text" placeholder="Nombre" class="form-control" name="nombre"></div>
             <div class="form-group">

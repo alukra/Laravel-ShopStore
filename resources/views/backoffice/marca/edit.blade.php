@@ -3,17 +3,17 @@
 @section ('title') {{ $page_title }} @stop
 
   @section('breadcrumb')
-    <li><a href="{{ url('back/category') }}">Caracteristicas</a></li>
+    <li><a href="{{ url('back/brand') }}">Caracteristicas</a></li>
     <li class="active">
         <strong>{{ $page_title }}</strong>
     </li>
   @endsection
-  
+
 @section ('content')
 
   <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-      <form role="form" method="post" action="{{ url('back/category/'. $categoria->id ) }}" enctype="multipart/form-data">
+      <form role="form" method="post" action="{{ url('back/brand/'. $marca->id ) }}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
       <div class="col-md-4">
@@ -56,7 +56,7 @@
             </div>
           @endif
             <input name="_method" type="hidden" value="PUT">
-            <div class="form-group"><label>Nombre</label> <input type="text" placeholder="Nombre" class="form-control" name="nombre" value="{{ $categoria->nombre }}"></div>
+            <div class="form-group"><label>Nombre</label> <input type="text" placeholder="Nombre" class="form-control" name="nombre" value="{{ $marca->nombre }}"></div>
             <div>
               <button class="btn btn-primary m-t-n-xs" type="submit"><strong>Guardar</strong></button>
             </div>

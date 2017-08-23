@@ -2,6 +2,12 @@
 
 @section ('title') {{ $page_title }} @stop
 
+  @section('breadcrumb')
+    <li class="active">
+        <strong>{{ $page_title }}</strong>
+    </li>
+  @endsection
+
 @section ('content')
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -12,6 +18,8 @@
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Principal</th>
+              <th>Orden</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -20,13 +28,19 @@
               <tr>
                 <td>{{ $caracteristica->nombre }}</td>
                 <td>
+                  @if ($caracteristica->principal == 1)
+                    Caracteristica marcada
+                  @else
+                    -
+                  @endif
+                </td>
+                <td>{{ $caracteristica->orden }}</td>
+                <td>
                   <a class="btn btn-default" href="{{ url('back/detail/' .  $caracteristica->id . "/edit" ) }}"><i class="fa fa-pencil"></i></a>
                   @if ($caracteristica->estado == 1)
                     <a class="btn btn-primary" href="{{ url('back/detail/' .  $caracteristica->id ) }}"><i class="fa fa-circle-o-notch"></i></a>
-                    <a class="btn btn-danger" href="#" disabled><i class="fa fa-times"></i></a>
                   @else
                     <a class="btn btn-default" href="{{ url('back/detail/' .  $caracteristica->id ) }}"><i class="fa fa-circle-o-notch"></i></a>
-                    <a class="btn btn-danger" href="#"><i class="fa fa-times"></i></a>
                   @endif
                 </td>
               </tr>
@@ -54,7 +68,8 @@
       "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": false
+      "autoWidth": false,
+      "order": [[ 2, "asc" ]]
     });
   </script>
 @endsection
