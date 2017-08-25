@@ -87,8 +87,8 @@
 						<ul class="dropdown-menu">
 							<li class="active"><a href="{{ url('/') }}">Inicio</a></li>
 							<li><a href="{{ url('/#teAsesoramos') }}">Te Asesoramos</a></li>
-							<li><a href="{{ url('/#destacados')}}">Productos Destacados</a></li>
-							<li><a href="{{ url('/#mejorCalificacion')}}">Mejor Calificación</a></li>
+							<!-- <li><a href="{{ url('/#destacados')}}">Productos Destacados</a></li>
+							<li><a href="{{ url('/#mejorCalificacion')}}">Mejor Calificación</a></li> -->
 						</ul>
 					</li>
 					<!-- End Pages -->
