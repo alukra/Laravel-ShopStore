@@ -71,7 +71,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="{{ url('/') }}">
-					<img id="logo-header" src="{{ asset('frontpage/img/valdezMobileLogo.png')}}" alt="Logo">
+					<img id="logo-header" src="{{ asset('frontpage/img/valdezMobileLogo.svg')}}" alt="Logo">
 				</a>
 			</div>
 
@@ -163,14 +163,9 @@
 							Ubicaciones
 						</a>
 						<ul class="dropdown-menu">
-							<li class="dropdown-submenu">
-								<a href="javascript:void(0);">El Salvador</a>
-								<ul class="dropdown-menu">
 									<li><a href="{{ url('location/1')}}">Merliot</a></li>
 									<li><a href="{{ url('location/2')}}">Escalón</a></li>
 									<li><a href="{{ url('location/3')}}">San Miguel</a></li>
-								</ul>
-							</li>
 						</ul>
 					</li>
 					<!-- End Promotion -->

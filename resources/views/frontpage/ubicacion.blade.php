@@ -63,6 +63,19 @@
 @endsection
 
 @section('scriptsExtras')
+  <script>
+    jQuery(document).ready(function() {
+      App.init();
+      ContactForm.initContactForm();
+      OwlCarousel.initOwlCarousel();
+      StyleSwitcher.initStyleSwitcher();
+    });
+
+    // Google Map
+    function initMap() {
+      GoogleMap.initGoogleMap();
+    }
+  </script>  
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGIAkd5LvY6YBAry_0Us1TpYiN1wbWkIU&sensor=false"></script>
   <script>
 		// Google Map
@@ -80,7 +93,7 @@
 	google.maps.visualRefresh = true;
 	//Setting starting options of map
 	var mapOptions = {
-	center: new google.maps.LatLng('{{ $ubicacion->latitud_mapa }}, {{ $ubicacion->longitud_mapa }}'),
+	center: new google.maps.LatLng({{ $ubicacion->latitud_mapa }}, {{ $ubicacion->longitud_mapa }}),
 	zoom: {{ $ubicacion->zoom }},
 	mapTypeId: google.maps.MapTypeId.TERRAIN
 	};
@@ -93,7 +106,7 @@
 	trafficLayer.setMap(map);
 	var infowindow = new google.maps.InfoWindow({
 	    content: '<div class="text-center"><h5><a href="https://www.waze.com/es-419/livemap?zoom=15&lat={{ $ubicacion->coord_x }}&lon={{ $ubicacion->coord_y }}&from_lat={{ $ubicacion->latitud_mapa }}&from_lon={{ $ubicacion->longitud_mapa }}&to_lat={{ $ubicacion->latitud_mapa }}&to_lon={{ $ubicacion->longitud_mapa }}&at_req=0&at_text=Now" target="_blank"><img src="{{asset('frontpage/img/wazze.png')}}"><br>¿Como llegar a Sucursal <br></h5><h3>{{ $ubicacion->nombre }}?</a></h3> </div>',
-	    position: new google.maps.LatLng('{{ $ubicacion->latitud_mapa }},{{ $ubicacion->longitud_mapa }}')
+	    position: new google.maps.LatLng({{ $ubicacion->latitud_mapa }},{{ $ubicacion->longitud_mapa }})
 	});
 	infowindow.open(map);
 	}
