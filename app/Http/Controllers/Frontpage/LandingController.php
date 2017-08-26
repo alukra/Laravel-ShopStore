@@ -15,8 +15,8 @@ class LandingController extends Controller
       ->join('imagen', 'imagen.id', 'img2_id')
       ->where('landing.estado', '=', 1)->first();
     $data['celimg'] = Imagen::find( $data['landing']->celimg_id );
-    $data['tabimg'] = Imagen::find( $data['landing']->celimg_id );
-    $data['coming'] = Imagen::find( $data['landing']->celimg_id );
+    $data['tabimg'] = Imagen::find( $data['landing']->tabimg_id );
+    $data['coming'] = Imagen::find( $data['landing']->comimg_id );
 
     return view('frontpage.landing.index', $data);
   }

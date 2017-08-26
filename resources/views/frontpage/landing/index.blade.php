@@ -29,11 +29,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('landing/plugins/revolution-slider/revolution/css/navigation.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('landing/plugins/revolution-slider/assets/css/noneed.css') }}">
 
-	<!-- CSS Theme -->
-	<link rel="stylesheet" href="{{ asset('landing/plugins/revolution-slider/assets/css/style.css') }}">
-
-	<!-- CSS Customization -->
-	<link rel="stylesheet" href="{{ asset('landing/plugins/revolution-slider/assets/css/custom.css') }}">
 </head>
 <body>
 <!-- SLIDER EXAMPLE -->
@@ -43,9 +38,9 @@
 		<!-- START REVOLUTION SLIDER 5.0.7 fullscreen mode -->
 		<div id="rev_slider_72_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.0.7">
 		<ul>	<!-- SLIDE -->
-		<li data-index="rs-251" data-transition="slidevertical" data-slotamount="1" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{ asset('landing/plugins/revolution-slider/assets/images/express_bglight-100x50.jpg') }}"" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="Intro" data-description="">
+		<li data-index="rs-251" data-transition="slidevertical" data-slotamount="1" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{ asset('landing/plugins/revolution-slider/assets/images/express_bglight-100x50.jpg') }}" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="Intro" data-description="">
 		<!-- MAIN IMAGE -->
-		<img src="{{ asset('landing/plugins/revolution-slider/assets/images/express_bglight.jpg') }}"" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+		<img src="{{ asset('landing/plugins/revolution-slider/assets/images/express_bglight.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 		<!-- LAYERS -->
 
 		<!-- LAYER NR. 1 -->
@@ -64,7 +59,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 5;"><img src="{{ asset('landing/plugins/revolution-slider/assets/images/macbookpro.png') }}"" alt="" width="1000" height="600" data-ww="['1000px','1000px','500px','350px']" data-hh="['600px','600px','300px','210px']" data-no-retina>
+		style="z-index: 5;"><img src="{{ asset('landing/plugins/revolution-slider/assets/images/macbookpro.png') }}" alt="" width="1000" height="600" data-ww="['1000px','1000px','500px','350px']" data-hh="['600px','600px','300px','210px']" data-no-retina>
 		</div>
 
 		<!-- LAYER NR. 2 -->
@@ -84,7 +79,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 6;"><img src="{{ asset('/images/pantallas-de-lading-page3.png') }}"" alt="" width="653" height="408" data-ww="['653px','653px','330px','230px']" data-hh="['408px','408px','206px','144px']" data-no-retina>
+		style="z-index: 6;"><img src="{{ asset($coming->url) }}" alt="" width="653" height="408" data-ww="['653px','653px','330px','230px']" data-hh="['408px','408px','206px','144px']" data-no-retina>
 		</div>
 
 		<!-- LAYER NR. 3 -->
@@ -103,7 +98,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 7;"><img src="{{ asset('landing/plugins/revolution-slider/assets/images/ipad.png') }}"" alt="" width="430" height="540" data-ww="['430px','430px','200px','170px']" data-hh="['540px','540px','251px','213px']" data-no-retina>
+		style="z-index: 7;"><img src="{{ asset('landing/plugins/revolution-slider/assets/images/ipad.png') }}" alt="" width="430" height="540" data-ww="['430px','430px','200px','170px']" data-hh="['540px','540px','251px','213px']" data-no-retina>
 		</div>
 
 		<!-- LAYER NR. 4 -->
@@ -123,7 +118,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 8;"><img src="{{ asset('/images/pantallas-de-lading-page2.png') }}"" alt="" width="290" height="374" data-ww="['290px','290px','135px','115px']" data-hh="['374px','374px','174px','148px']" data-no-retina>
+		style="z-index: 8;"><img src="{{ asset($tabimg->url) }}" alt="" width="290" height="374" data-ww="['290px','290px','135px','115px']" data-hh="['374px','374px','174px','148px']" data-no-retina>
 		</div>
 
 		<!-- LAYER NR. 5 -->
@@ -142,7 +137,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 9;"><img src="{{ asset('landing/plugins/revolution-slider/assets/images/ihpone.png') }}"" alt="" width="260" height="450" data-ww="['260px','260px','130px','100px']" data-hh="['450px','450px','225px','173px']" data-no-retina>
+		style="z-index: 9;"><img src="{{ asset('landing/plugins/revolution-slider/assets/images/ihpone.png') }}" alt="" width="260" height="450" data-ww="['260px','260px','130px','100px']" data-hh="['450px','450px','225px','173px']" data-no-retina>
 		</div>
 
 		<!-- LAYER NR. 6 -->
@@ -162,7 +157,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 10;"><img src="{{ asset('/images/pantallas-de-lading-page1.png') }}"" alt="" width="170" height="286" data-ww="['170px','170px','85px','66px']" data-hh="['286px','286px','143px','111px']" data-no-retina>
+		style="z-index: 10;"><img src="{{ asset($celimg->url) }}" alt="" width="170" height="286" data-ww="['170px','170px','85px','66px']" data-hh="['286px','286px','143px','111px']" data-no-retina>
 		</div>
 
 		<!-- LAYER NR. 7 -->
@@ -207,7 +202,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 12; white-space: nowrap;letter-spacing:2px;font-weight:500;">en: LAPTOPS / TABLETS / CELULARES / TODO EN UNO
+		style="z-index: 12; white-space: nowrap;letter-spacing:2px;font-weight:500;">{{ $landing->txts1p1 }}
 		</div>
 
 		<!-- LAYER NR. 9 -->
@@ -230,8 +225,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 13; min-width: 448px; max-width: 448px; white-space: normal;">¡Sólo por este día, obten tu iMac<br>
-		All in One, a un precio increible!
+		style="z-index: 13; min-width: 448px; max-width: 448px; white-space: normal;">{{ $landing->txts2p1 }}
 		</div>
 
 		<!-- LAYER NR. 10 -->
@@ -259,9 +253,9 @@
 		</div>
 		</li>
 		<!-- SLIDE -->
-		<li data-index="rs-252" data-transition="slidevertical" data-slotamount="1" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{ asset('landing/plugins/revolution-slider/assets/images/desktopbg1-100x50.jpg') }}"" data-rotate="0" data-saveperformance="off" data-title="Examples" data-description="">
+		<li data-index="rs-252" data-transition="slidevertical" data-slotamount="1" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{ asset('landing/plugins/revolution-slider/assets/images/desktopbg1-100x50.jpg') }}" data-rotate="0" data-saveperformance="off" data-title="Examples" data-description="">
 		<!-- MAIN IMAGE -->
-		<img src="{{ asset('landing/plugins/revolution-slider/assets/images/desktopbg1.jpg') }}"" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+		<img src="{{ asset('landing/plugins/revolution-slider/assets/images/desktopbg1.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 		<!-- LAYERS -->
 
 		<!-- LAYER NR. 1 -->
@@ -280,7 +274,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 5;"><img src="{{ asset('/images/iconic.png') }}"" alt="" width="1000" height="600" data-ww="['1000px','1000px','500px','350px']" data-hh="['600px','600px','300px','210px']" data-no-retina>
+		style="z-index: 5;"><img src="{{ asset($landing->img2) }}" alt="" width="1000" height="600" data-ww="['1000px','1000px','500px','350px']" data-hh="['600px','600px','300px','210px']" data-no-retina>
 		</div>
 
 		<!-- LAYER NR. 2 -->
@@ -323,8 +317,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 7; white-space: nowrap;">$ 175 USD<br>
-		Apple's iconic
+		style="z-index: 7; white-space: nowrap;">{{ $landing->txtp2 }}
 		</div>
 
 		<!-- LAYER NR. 4 -->
@@ -346,7 +339,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 8; white-space: nowrap;letter-spacing:2px;font-weight:500;">all-in-one desktop
+		style="z-index: 8; white-space: nowrap;letter-spacing:2px;font-weight:500;">{{ $landing->txts1p2 }}
 		</div>
 
 		<!-- LAYER NR. 5 -->
@@ -369,10 +362,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 9; min-width: 448px; max-width: 448px; white-space: normal;">iMac posee una pantalla de 20 pulgadas ideal
-para trabajar comodamente en casa o en tu oficina.<br>
-		Incluye mouse y teclado<br><br>
-		Aquín en vez de la laptop, iria dos vistas de la iMac
+		style="z-index: 9; min-width: 448px; max-width: 448px; white-space: normal;">{{ $landing->txts2p2 }}
 		</div>
 
 		<!-- LAYER NR. 6 -->
@@ -400,9 +390,9 @@ para trabajar comodamente en casa o en tu oficina.<br>
 		</div>
 		</li>
 		<!-- SLIDE -->
-		<li data-index="rs-254" data-transition="slidevertical" data-slotamount="1" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{ asset('landing/plugins/revolution-slider/assets/images/officeloop_cover-100x50.jpg') }}"" data-rotate="0" data-saveperformance="off" data-title="Get a License" data-description="">
+		<li data-index="rs-254" data-transition="slidevertical" data-slotamount="1" data-easein="default" data-easeout="default" data-masterspeed="1500" data-thumb="{{ asset('landing/plugins/revolution-slider/assets/images/officeloop_cover-100x50.jpg') }}" data-rotate="0" data-saveperformance="off" data-title="Get a License" data-description="">
 		<!-- MAIN IMAGE -->
-		<img src="{{ asset('landing/plugins/revolution-slider/assets/images/officeloop_cover.jpg') }}"" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+		<img src="{{ asset('landing/plugins/revolution-slider/assets/images/officeloop_cover.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 		<!-- LAYERS -->
 
 		<!-- BACKGROUND VIDEO LAYER -->
@@ -617,7 +607,7 @@ Sucursal San Miguel<br>
 		data-startslide="0"
 		data-endslide="3"
 
-		style="z-index: 7;"><img src="../{{ asset('landing/img/logoValdezMobile.svg')}}" alt="">
+		style="z-index: 7;"><img src="{{ asset('landing/img/logoValdezMobile.svg')}}" alt="">
 		</div>
 
 		<!-- LAYER NR. 4 -->
