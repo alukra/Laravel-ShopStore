@@ -20,8 +20,8 @@ class NavbarMarcas {
       $perfil   = Session()->get('perfil');
 
       //Consultas del menu
-      $marcas = Marca::select('marca.*', 'imagen.url')
-                ->join('imagen', 'imagen.id', '=', 'imagen_id')->get();
+      $marcas = Marca::select('Marca.*', 'Imagen.url')
+                ->join('Imagen', 'Imagen.id', '=', 'imagen_id')->get();
 
       $menu = '<div class="col-md-8 col-sm-6">
                 <h3 class="mega-menu-heading"><i class="fa fa-shopping-bag fa-fw"></i> Marcas </h3>

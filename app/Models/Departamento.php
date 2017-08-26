@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Departamento extends Model{
 
-  	protected $table = 'departamento';
+  	protected $table = 'Departamento';
 
   	public function ciudad()
     {

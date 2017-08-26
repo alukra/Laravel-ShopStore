@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Detalle_promocion extends Model
 {
-  protected $table = "detalle_promocion";
+  protected $table = "Detalle_promocion";
 
   use SoftDeletes;
   protected $dates = ['deleted_at'];

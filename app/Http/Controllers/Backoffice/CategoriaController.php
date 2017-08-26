@@ -25,8 +25,8 @@ class CategoriaController extends Controller
   public function index() {
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title'] = "Categorias de Productos";
-    $data['categorias'] = Categoria::select('categoria.*', 'imagen.url')
-              ->join('imagen', 'imagen.id', '=', 'imagen_id')->get();
+    $data['categorias'] = Categoria::select('Categoria.*', 'Imagen.url')
+              ->join('Imagen', 'Imagen.id', '=', 'imagen_id')->get();
     return view('backoffice.categoria.index')->with($data);
   }
 

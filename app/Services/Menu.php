@@ -22,16 +22,16 @@ class Menu {
       $perfil   = Session()->get('perfil');
 
       //Consultas del menu
-      $modulos = Modulo::select('modulo.id', 'modulo.nombre', 'modulo.icono')
-                ->join('modulo_seccion', 'modulo.id', '=', 'modulo_id')
-                ->join('permiso_rol', 'modulo_seccion.id', '=', 'permiso_rol.modulo_seccion_id')
+      $modulos = Modulo::select('Modulo.id', 'Modulo.nombre', 'Modulo.icono')
+                ->join('Modulo_seccion', 'Modulo.id', '=', 'modulo_id')
+                ->join('Permiso_rol', 'Modulo_seccion.id', '=', 'Permiso_rol.modulo_seccion_id')
                 ->where('rol_id', '=', Auth::user()->rol_id)
-                ->groupBy('modulo.id', 'modulo.nombre', 'modulo.icono')
-                ->orderBy('modulo.orden', 'asc')
+                ->groupBy('Modulo.id', 'Modulo.nombre', 'Modulo.icono')
+                ->orderBy('Modulo.orden', 'asc')
                 ->get();
 
-      $submodulos = Modulo_seccion::select('modulo_seccion.nombre', 'modulo_seccion.url', 'modulo_seccion.icono', 'modulo_id')
-                ->join('permiso_rol', 'modulo_seccion.id', '=', 'permiso_rol.modulo_seccion_id')
+      $submodulos = Modulo_seccion::select('Modulo_seccion.nombre', 'Modulo_seccion.url', 'Modulo_seccion.icono', 'modulo_id')
+                ->join('Permiso_rol', 'Modulo_seccion.id', '=', 'Permiso_rol.modulo_seccion_id')
                 ->where('rol_id', '=', Auth::user()->rol_id)
                 ->orderBy('orden', 'asc')
                 ->get();

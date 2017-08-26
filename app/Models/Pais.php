@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pais extends Model
 {
-  protected $table = "pais";
+  protected $table = "Pais";
 
   public function departamento(){
     return $this->hasMany('App\Models\Departamento');

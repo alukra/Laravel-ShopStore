@@ -25,8 +25,8 @@ class TipoController extends Controller
   public function index() {
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title'] = "Tipos de Productos";
-    $data['tipos'] = Tipo::select('tipo.*', 'imagen.url')
-              ->join('imagen', 'imagen.id', '=', 'imagen_id')->get();
+    $data['tipos'] = Tipo::select('Tipo.*', 'Imagen.url')
+              ->join('Imagen', 'Imagen.id', '=', 'imagen_id')->get();
     return view('backoffice.tipo.index')->with($data);
   }
 

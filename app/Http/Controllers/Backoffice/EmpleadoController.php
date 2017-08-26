@@ -35,8 +35,8 @@ class EmpleadoController extends Controller{
   public function index(){
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title'] = "Empleados";
-    $data['empleados'] = Empleado::select('empleado.id', 'users.nombre', 'apellido', 'empleado.usuario_id', 'rol.nombre as rol', 'telefono', 'email')
-                          ->join('users', 'users.id', '=', 'empleado.usuario_id')
+    $data['empleados'] = Empleado::select('Empleado.id', 'Users.nombre', 'apellido', 'Empleado.usuario_id', 'Rol.nombre as rol', 'telefono', 'email')
+                          ->join('Users', 'Users.id', '=', 'Empleado.usuario_id')
                           ->join('rol', 'rol.id', '=', 'users.rol_id')
                           ->get();
     return view('backoffice.empleado.index')->with($data);
@@ -115,9 +115,9 @@ class EmpleadoController extends Controller{
     */
     public function edit( $id ){
       $data['user_perfil'] = Session()->get('perfil');
-      $data['empleado'] =  Empleado::select('empleado.*', 'rol_id', 'email', 'nombre', 'apellido')
-                            ->join('users', 'users.id', '=' , 'empleado.usuario_id')
-                            ->where('empleado.id', '=', $id)
+      $data['empleado'] =  Empleado::select('Empleado.*', 'rol_id', 'email', 'nombre', 'apellido')
+                            ->join('Users', 'Users.id', '=' , 'Empleado.usuario_id')
+                            ->where('Empleado.id', '=', $id)
                             ->first();
       $data['page_title']  = "Editar perfil de " . $data['empleado']['nombre'] . ' ' . $data['empleado']['apellido'];
       if ($data['empleado']  == null) { return redirect('back/employee'); } //Verificación para evitar errores

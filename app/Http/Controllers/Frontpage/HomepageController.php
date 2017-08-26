@@ -23,14 +23,14 @@ use App\Models\Marca;
 class HomepageController extends Controller
 {
     public function getIndex(){
-      $data['tipos'] = Tipo::select('tipo.*', 'url')
-        ->join('imagen', 'imagen.id', 'imagen_id')
+      $data['tipos'] = Tipo::select('Tipo.*', 'url')
+        ->join('Imagen', 'Imagen.id', 'imagen_id')
         ->limit(4)->get();
-      $data['categorias'] = Categoria::select(DB::raw('categoria.*, url,
+      $data['categorias'] = Categoria::select(DB::raw('Categoria.*, url,
             (SELECT count(Producto_categoria.id) FROM Producto
-              INNER JOIN Producto_categoria ON producto.id = producto_id
-              WHERE (categoria_id = categoria.id) AND (producto_categoria.deleted_at IS NULL) ) as productos ')
-        )->join('imagen', 'imagen.id', 'imagen_id')
+              INNER JOIN Producto_categoria ON Producto.id = producto_id
+              WHERE (categoria_id = Categoria.id) AND (Producto_categoria.deleted_at IS NULL) ) as productos ')
+        )->join('Imagen', 'Imagen.id', 'imagen_id')
         ->limit(3)->get();
 
       return view('frontpage.index', $data);
@@ -46,7 +46,7 @@ class HomepageController extends Controller
       $data['grid']['categoria'] = $categoria;
 
       $where[] = ['venta', '=', 1];
-      $where[] = ['producto_imagen.principal', '=', 1];
+      $where[] = ['Producto_imagen.principal', '=', 1];
       if ($tipo != 0) {
         $where[] = ['tipo_id', '=', $tipo];
       }
@@ -59,43 +59,43 @@ class HomepageController extends Controller
 
 
       if ($categoria != 0) {
-        $data['productos'] = Producto::select('producto.*', 'imagen.url', 'tipo.nombre as tipo' , 'marca.nombre as marca')
-        ->join('producto_imagen', 'producto.id', 'producto_imagen.producto_id')
-        ->join('imagen', 'imagen.id', 'imagen_id')
-        ->join('producto_categoria', 'producto.id', 'producto_categoria.producto_id')
-        ->join('tipo', 'tipo_id', 'tipo.id')
-        ->join('categoria', 'categoria_id', 'categoria.id')
-        ->join('marca', 'marca.id', '=', 'producto.marca_id')
+        $data['productos'] = Producto::select('Producto.*', 'Imagen.url', 'Tipo.nombre as tipo' , 'Marca.nombre as marca')
+        ->join('Producto_imagen', 'Producto.id', 'Producto_imagen.producto_id')
+        ->join('Imagen', 'Imagen.id', 'imagen_id')
+        ->join('Producto_categoria', 'Producto.id', 'Producto_categoria.producto_id')
+        ->join('Tipo', 'tipo_id', 'Tipo.id')
+        ->join('Categoria', 'categoria_id', 'Categoria.id')
+        ->join('Marca', 'Marca.id', '=', 'Producto.marca_id')
         ->where($where)
         ->distinct()
-        ->orderBy('producto.id', 'DESC')
+        ->orderBy('Producto.id', 'DESC')
         ->paginate(15);
       }else {
-        $data['productos'] = Producto::select('producto.*', 'imagen.url', 'tipo.nombre as tipo' , 'marca.nombre as marca')
-        ->join('producto_imagen', 'producto.id', 'producto_imagen.producto_id')
-        ->join('imagen', 'imagen.id', 'imagen_id')
-        ->join('producto_categoria', 'producto.id', 'producto_categoria.producto_id')
-        ->join('tipo', 'tipo_id', 'tipo.id')
-        ->join('marca', 'marca.id', '=', 'producto.marca_id')
+        $data['productos'] = Producto::select('Producto.*', 'Imagen.url', 'Tipo.nombre as tipo' , 'Marca.nombre as marca')
+        ->join('Producto_imagen', 'Producto.id', 'Producto_imagen.producto_id')
+        ->join('Imagen', 'Imagen.id', 'imagen_id')
+        ->join('Producto_categoria', 'Producto.id', 'Producto_categoria.producto_id')
+        ->join('Tipo', 'tipo_id', 'Tipo.id')
+        ->join('Marca', 'Marca.id', '=', 'Producto.marca_id')
         ->where($where)
         ->distinct()
-        ->orderBy('producto.id', 'DESC')
+        ->orderBy('Producto.id', 'DESC')
         ->paginate(15);
       }
 
       $data['grid']['productos'] = $data['productos']->count();
 
       //Datos del Filtrado
-      $data['marcas'] = Marca::select(DB::raw('marca.id, marca.nombre,
-            (SELECT count(producto.id) FROM Producto
-              WHERE marca_id = marca.id ) AS productos'))->get();
-      $data['tipos'] = Tipo::select(DB::raw('tipo.id, tipo.nombre,
-            (SELECT count(producto.id) FROM Producto
-              WHERE tipo_id = tipo.id ) AS productos'))->get();
-      $data['categorias'] = Categoria::select(DB::raw('categoria.id, categoria.nombre,
+      $data['marcas'] = Marca::select(DB::raw('Marca.id, Marca.nombre,
+            (SELECT count(Producto.id) FROM Producto
+              WHERE marca_id = Marca.id ) AS productos'))->get();
+      $data['tipos'] = Tipo::select(DB::raw('Tipo.id, Tipo.nombre,
+            (SELECT count(Producto.id) FROM Producto
+              WHERE tipo_id = Tipo.id ) AS productos'))->get();
+      $data['categorias'] = Categoria::select(DB::raw('Categoria.id, Categoria.nombre,
             (SELECT count(Producto_categoria.id) FROM Producto
-              INNER JOIN Producto_categoria ON producto.id = producto_id
-              WHERE (categoria_id = categoria.id) AND (producto_categoria.deleted_at IS NULL) ) as productos '))->get();
+              INNER JOIN Producto_categoria ON Producto.id = producto_id
+              WHERE (categoria_id = Categoria.id) AND (Producto_categoria.deleted_at IS NULL) ) as productos '))->get();
 
       return view('frontpage.grid.index', $data);
 
@@ -110,7 +110,7 @@ class HomepageController extends Controller
       $data['grid']['categoria'] = $categoria;
 
       $where[] = ['venta', '=', 1];
-      $where[] = ['producto_imagen.principal', '=', 1];
+      $where[] = ['Producto_imagen.principal', '=', 1];
       if ($tipo != 0) {
         $where[] = ['tipo_id', '=', $tipo];
       }
@@ -123,43 +123,43 @@ class HomepageController extends Controller
 
 
       if ($categoria != 0) {
-        $data['productos'] = Producto::select('producto.*', 'imagen.url', 'tipo.nombre as tipo' , 'marca.nombre as marca')
-        ->join('producto_imagen', 'producto.id', 'producto_imagen.producto_id')
-        ->join('imagen', 'imagen.id', 'imagen_id')
-        ->join('producto_categoria', 'producto.id', 'producto_categoria.producto_id')
-        ->join('tipo', 'tipo_id', 'tipo.id')
-        ->join('categoria', 'categoria_id', 'categoria.id')
-        ->join('marca', 'marca.id', '=', 'producto.marca_id')
+        $data['productos'] = Producto::select('Producto.*', 'Imagen.url', 'Tipo.nombre as tipo' , 'Marca.nombre as marca')
+        ->join('Producto_imagen', 'Producto.id', 'Producto_imagen.producto_id')
+        ->join('Imagen', 'Imagen.id', 'imagen_id')
+        ->join('Producto_categoria', 'Producto.id', 'Producto_categoria.producto_id')
+        ->join('Tipo', 'tipo_id', 'Tipo.id')
+        ->join('Categoria', 'categoria_id', 'Categoria.id')
+        ->join('Marca', 'Marca.id', '=', 'Producto.marca_id')
         ->where($where)
         ->distinct()
-        ->orderBy('producto.id', 'DESC')
+        ->orderBy('Producto.id', 'DESC')
         ->paginate(15);
       }else {
-        $data['productos'] = Producto::select('producto.*', 'imagen.url', 'tipo.nombre as tipo' , 'marca.nombre as marca')
-        ->join('producto_imagen', 'producto.id', 'producto_imagen.producto_id')
-        ->join('imagen', 'imagen.id', 'imagen_id')
-        ->join('producto_categoria', 'producto.id', 'producto_categoria.producto_id')
-        ->join('tipo', 'tipo_id', 'tipo.id')
-        ->join('marca', 'marca.id', '=', 'producto.marca_id')
+        $data['productos'] = Producto::select('Producto.*', 'Imagen.url', 'Tipo.nombre as tipo' , 'Marca.nombre as marca')
+        ->join('Producto_imagen', 'Producto.id', 'Producto_imagen.producto_id')
+        ->join('Imagen', 'Imagen.id', 'imagen_id')
+        ->join('Producto_categoria', 'Producto.id', 'Producto_categoria.producto_id')
+        ->join('Tipo', 'tipo_id', 'Tipo.id')
+        ->join('Marca', 'Marca.id', '=', 'Producto.marca_id')
         ->where($where)
         ->distinct()
-        ->orderBy('producto.id', 'DESC')
+        ->orderBy('Producto.id', 'DESC')
         ->paginate(15);
       }
+
       $data['grid']['productos'] = $data['productos']->count();
 
       //Datos del Filtrado
-      $data['marcas'] = Marca::select(DB::raw('marca.id, marca.nombre,
-            (SELECT count(producto.id) FROM Producto
-              WHERE marca_id = marca.id ) AS productos'))->get();
-      $data['tipos'] = Tipo::select(DB::raw('tipo.id, tipo.nombre,
-            (SELECT count(producto.id) FROM Producto
-              WHERE tipo_id = tipo.id ) AS productos'))->get();
-      $data['categorias'] = Categoria::select(DB::raw('categoria.id, categoria.nombre,
+      $data['marcas'] = Marca::select(DB::raw('Marca.id, Marca.nombre,
+            (SELECT count(Producto.id) FROM Producto
+              WHERE marca_id = Marca.id ) AS productos'))->get();
+      $data['tipos'] = Tipo::select(DB::raw('Tipo.id, Tipo.nombre,
+            (SELECT count(Producto.id) FROM Producto
+              WHERE tipo_id = Tipo.id ) AS productos'))->get();
+      $data['categorias'] = Categoria::select(DB::raw('Categoria.id, Categoria.nombre,
             (SELECT count(Producto_categoria.id) FROM Producto
-              INNER JOIN Producto_categoria ON producto.id = producto_id
-              WHERE (categoria_id = categoria.id) AND (producto_categoria.deleted_at IS NULL) ) as productos '))->get();
-
+              INNER JOIN Producto_categoria ON Producto.id = producto_id
+              WHERE (categoria_id = Categoria.id) AND (Producto_categoria.deleted_at IS NULL) ) as productos '))->get();
 
       return view('frontpage.lista.index', $data);
     }
@@ -185,52 +185,52 @@ class HomepageController extends Controller
 
     public function getProduct($id, Request $request){
 
-      $data['producto'] = Producto::select('producto.*', 'tipo.nombre as tipo')
-                ->join('tipo', 'tipo.id', '=', 'producto.tipo_id')
-                ->where('producto.id', '=', $id)
+      $data['producto'] = Producto::select('Producto.*', 'Tipo.nombre as tipo')
+                ->join('Tipo', 'Tipo.id', '=', 'Producto.tipo_id')
+                ->where('Producto.id', '=', $id)
                 ->first();
 
       if ($data['producto']  == null) { return redirect('/'); }
 
       //Datos del producto
-      $data['imagenes'] = Imagen::select('imagen.*', 'producto_imagen.principal')
-        ->join('producto_imagen', 'imagen_id', '=', 'imagen.id')
+      $data['imagenes'] = Imagen::select('Imagen.*', 'Producto_imagen.principal')
+        ->join('Producto_imagen', 'imagen_id', '=', 'Imagen.id')
         ->where([
           ['producto_id', '=', $id],
-          ['producto_imagen.deleted_at', '=', null],
+          ['Producto_imagen.deleted_at', '=', null],
         ])->orderBy('principal', 'DESC')->get();
-      $data['marca'] = Marca::select('marca.nombre', 'imagen.url')->where('marca.id', '=',  $data['producto']->marca_id  )
-        ->join('imagen', 'imagen.id', 'marca.imagen_id')->first();
-      $data['categorias'] = Categoria::select('categoria.*')
-        ->join('producto_categoria', 'categoria_id', '=', 'categoria.id')
+      $data['marca'] = Marca::select('Marca.nombre', 'Imagen.url')->where('Marca.id', '=',  $data['producto']->marca_id  )
+        ->join('Imagen', 'Imagen.id', 'Marca.imagen_id')->first();
+      $data['categorias'] = Categoria::select('Categoria.*')
+        ->join('Producto_categoria', 'categoria_id', '=', 'Categoria.id')
         ->where([
           ['producto_id', '=', $id],
-          ['producto_categoria.deleted_at', '=', null],
+          ['Producto_categoria.deleted_at', '=', null],
         ])->get();
-      $data['caracteristicas'] = Caracteristica::select('caracteristica.*', 'producto_caracteristica.descripcion')
-        ->join('producto_caracteristica', 'caracteristica_id', '=', 'caracteristica.id')
+      $data['caracteristicas'] = Caracteristica::select('Caracteristica.*', 'Producto_caracteristica.descripcion')
+        ->join('Producto_caracteristica', 'caracteristica_id', '=', 'Caracteristica.id')
         ->where([
           ['producto_id', '=', $id],
-          ['producto_caracteristica.deleted_at', '=', null],
+          ['Producto_caracteristica.deleted_at', '=', null],
         ])->orderBy('orden', 'ASC')->get();
-      $data['caracteristicas_p'] = Caracteristica::select('caracteristica.*', 'producto_caracteristica.descripcion')
-        ->join('producto_caracteristica', 'caracteristica_id', '=', 'caracteristica.id')
+      $data['caracteristicas_p'] = Caracteristica::select('Caracteristica.*', 'Producto_caracteristica.descripcion')
+        ->join('Producto_caracteristica', 'caracteristica_id', '=', 'Caracteristica.id')
         ->where([
           ['producto_id', '=', $id],
-          ['producto_caracteristica.deleted_at', '=', null],
+          ['Producto_caracteristica.deleted_at', '=', null],
           ['principal', '=', 1],
         ])->orderBy('orden', 'ASC')->get();
 
       //Productos parecidos
-      $data['productos'] = Producto::select('producto.*', 'imagen.url', 'tipo.nombre as tipo')
-        ->join('producto_imagen', 'producto.id', 'producto_id')
-        ->join('imagen', 'imagen.id', 'imagen_id')
-        ->join('tipo', 'tipo_id', 'tipo.id')
+      $data['productos'] = Producto::select('Producto.*', 'Imagen.url', 'Tipo.nombre as tipo')
+        ->join('Producto_imagen', 'Producto.id', 'producto_id')
+        ->join('Imagen', 'Imagen.id', 'imagen_id')
+        ->join('Tipo', 'tipo_id', 'Tipo.id')
         ->where([
           ['venta', '=', 1],
           ['producto_id', '!=', $id],
         ])
-        ->orderBy('producto.precio', 'DESC')->limit(8)->get();
+        ->orderBy('Producto.precio', 'DESC')->limit(8)->get();
 
       $data['page_title'] = $data['producto']->nombre;
       return view('frontpage.productos.producto', $data);

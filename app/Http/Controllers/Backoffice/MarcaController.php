@@ -26,8 +26,8 @@ class MarcaController extends Controller
   public function index() {
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title'] = "Marca";
-    $data['marcas'] = Marca::select('marca.*', 'imagen.url')
-              ->join('imagen', 'imagen.id', '=', 'imagen_id')->get();
+    $data['marcas'] = Marca::select('Marca.*', 'Imagen.url')
+              ->join('Imagen', 'Imagen.id', '=', 'imagen_id')->get();
     return view('backoffice.marca.index')->with($data);
   }
 

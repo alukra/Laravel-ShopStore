@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Garantia extends Model
 {
-  protected $table = "garantia";
-  
+  protected $table = "Garantia";
+
 }

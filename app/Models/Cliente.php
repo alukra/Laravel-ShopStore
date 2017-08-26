@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cliente extends Model
 {
-  protected $table = "cliente";
+  protected $table = "Cliente";
 
   use SoftDeletes;
   protected $dates = ['deleted_at'];

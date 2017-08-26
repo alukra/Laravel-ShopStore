@@ -29,9 +29,9 @@ class ProductoController extends Controller
   public function index() {
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title'] = "Productos";
-    $data['productos'] = Producto::select('producto.*', 'tipo.nombre as tipo', 'marca.nombre as marca')
-              ->join('tipo', 'tipo.id', '=', 'producto.tipo_id')
-              ->join('marca', 'marca.id', '=', 'producto.marca_id')->get();
+    $data['productos'] = Producto::select('Producto.*', 'Tipo.nombre as tipo', 'Marca.nombre as marca')
+              ->join('Tipo', 'Tipo.id', '=', 'Producto.tipo_id')
+              ->join('Marca', 'Marca.id', '=', 'Producto.marca_id')->get();
     return view('backoffice.producto.index')->with($data);
   }
 
@@ -88,32 +88,32 @@ class ProductoController extends Controller
   public function edit($id){
     $data['user_perfil'] = Session()->get('perfil');
     $data['page_title']  = "Editar Producto";
-    $data['producto'] = Producto::select('producto.*', 'tipo.nombre as tipo')
-              ->join('tipo', 'tipo.id', '=', 'producto.tipo_id')
-              ->join('marca', 'marca.id', '=', 'producto.marca_id')
-              ->where('producto.id', '=', $id)
+    $data['producto'] = Producto::select('Producto.*', 'Tipo.nombre as tipo')
+              ->join('Tipo', 'Tipo.id', '=', 'Producto.tipo_id')
+              ->join('marca', 'Marca.id', '=', 'Producto.marca_id')
+              ->where('Producto.id', '=', $id)
               ->first();
 
     if ($data['producto']  == null) { return redirect('back/product'); } //Verificación para evitar errores
 
     //Datos del producto
-    $data['imagenes'] = Imagen::select('imagen.*', 'producto_imagen.principal')
-      ->join('producto_imagen', 'imagen_id', '=', 'imagen.id')
+    $data['imagenes'] = Imagen::select('Imagen.*', 'Producto_imagen.principal')
+      ->join('Producto_imagen', 'imagen_id', '=', 'Imagen.id')
       ->where([
         ['producto_id', '=', $id],
-        ['producto_imagen.deleted_at', '=', null],
+        ['Producto_imagen.deleted_at', '=', null],
       ])->get();
-    $data['categorias_producto'] = Categoria::select('categoria.*')
-      ->join('producto_categoria', 'categoria_id', '=', 'categoria.id')
+    $data['categorias_producto'] = Categoria::select('Categoria.*')
+      ->join('Producto_categoria', 'categoria_id', '=', 'Categoria.id')
       ->where([
         ['producto_id', '=', $id],
-        ['producto_categoria.deleted_at', '=', null],
+        ['Producto_categoria.deleted_at', '=', null],
       ])->get();
-    $data['caracteristicas_producto'] = Caracteristica::select('caracteristica.*', 'producto_caracteristica.descripcion')
-      ->join('producto_caracteristica', 'caracteristica_id', '=', 'caracteristica.id')
+    $data['aracteristicas_producto'] = Caracteristica::select('Caracteristica.*', 'Producto_caracteristica.descripcion')
+      ->join('Producto_caracteristica', 'caracteristica_id', '=', 'Caracteristica.id')
       ->where([
         ['producto_id', '=', $id],
-        ['producto_caracteristica.deleted_at', '=', null],
+        ['Producto_caracteristica.deleted_at', '=', null],
       ])->get();
 
     //Datos generales
