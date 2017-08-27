@@ -8,7 +8,6 @@
 
   //use App\Models\Sesion_usuario;
 	use App\Models\Empleado;
-  use App\Models\Afiliado;
 
 
 	class Session_usuario{
@@ -20,19 +19,12 @@
      */
     public static function session_usuario(){
       if ( Auth::user()->tipo == 1) {
-        $data = Empleado::select('empleado.id', 'fecha_nacimiento', 'genero', 'url')
-                  ->join('imagen', 'empleado.imagen_id','=', 'imagen.id')
-                  ->where('empleado.usuario_id', '=', Auth::user()->id )
+        $data = Empleado::select('Empleado.id', 'fecha_nacimiento', 'genero', 'url')
+                  ->join('Imagen', 'Empleado.imagen_id','=', 'Imagen.id')
+                  ->where('Empleado.usuario_id', '=', Auth::user()->id )
                   ->first();
       }elseif( Auth::user()->tipo == 2 ){
-        $data = Afiliado::select( 'afiliado.id', 'afiliado.nombre', 'apellido', 'notificaciones_activas', 'estado_registro',
-                    'url','afiliado.codigo', 'idioma.nombre as idioma', 'idioma.codigo as idioma_abr' , 'fase'
-                  )
-                  ->join('imagen_usuario', 'imagen_usuario.usuario_id', '=', 'afiliado.usuario_id')
-                  ->join('idioma', 'afiliado.idioma_id', '=', 'idioma.id')
-                  ->where('afiliado.usuario_id', '=', Auth::user()->id)
-                  ->where('imagen_usuario.estado', '=', 1)
-                  ->first();
+
       }
       Session::put('perfil', $data);
     }
