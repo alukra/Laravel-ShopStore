@@ -90,7 +90,7 @@ class ProductoController extends Controller
     $data['page_title']  = "Editar Producto";
     $data['producto'] = Producto::select('Producto.*', 'Tipo.nombre as tipo')
               ->join('Tipo', 'Tipo.id', '=', 'Producto.tipo_id')
-              ->join('marca', 'Marca.id', '=', 'Producto.marca_id')
+              ->join('Marca', 'Marca.id', '=', 'Producto.marca_id')
               ->where('Producto.id', '=', $id)
               ->first();
 
@@ -109,7 +109,7 @@ class ProductoController extends Controller
         ['producto_id', '=', $id],
         ['Producto_categoria.deleted_at', '=', null],
       ])->get();
-    $data['aracteristicas_producto'] = Caracteristica::select('Caracteristica.*', 'Producto_caracteristica.descripcion')
+    $data['caracteristicas_producto'] = Caracteristica::select('Caracteristica.*', 'Producto_caracteristica.descripcion')
       ->join('Producto_caracteristica', 'caracteristica_id', '=', 'Caracteristica.id')
       ->where([
         ['producto_id', '=', $id],

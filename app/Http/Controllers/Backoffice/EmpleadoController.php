@@ -37,7 +37,7 @@ class EmpleadoController extends Controller{
     $data['page_title'] = "Empleados";
     $data['empleados'] = Empleado::select('Empleado.id', 'Users.nombre', 'apellido', 'Empleado.usuario_id', 'Rol.nombre as rol', 'telefono', 'email')
                           ->join('Users', 'Users.id', '=', 'Empleado.usuario_id')
-                          ->join('rol', 'rol.id', '=', 'users.rol_id')
+                          ->join('Rol', 'Rol.id', '=', 'Users.rol_id')
                           ->get();
     return view('backoffice.empleado.index')->with($data);
   }

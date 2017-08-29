@@ -47,6 +47,7 @@ class HomepageController extends Controller
 
       $where[] = ['venta', '=', 1];
       $where[] = ['Producto_imagen.principal', '=', 1];
+      $where[] = ['Producto_imagen.deleted_at', '=', null];
       if ($tipo != 0) {
         $where[] = ['tipo_id', '=', $tipo];
       }
@@ -111,6 +112,7 @@ class HomepageController extends Controller
 
       $where[] = ['venta', '=', 1];
       $where[] = ['Producto_imagen.principal', '=', 1];
+      $where[] = ['Producto_imagen.deleted_at', '=', null];
       if ($tipo != 0) {
         $where[] = ['tipo_id', '=', $tipo];
       }
@@ -229,8 +231,10 @@ class HomepageController extends Controller
         ->where([
           ['venta', '=', 1],
           ['producto_id', '!=', $id],
+          ['Producto_imagen.principal', '=', 1],
+          ['Producto_imagen.deleted_at', '=', null]
         ])
-        ->orderBy('Producto.precio', 'DESC')->limit(8)->get();
+        ->inRandomOrder()->limit(8)->get();
 
       $data['page_title'] = $data['producto']->nombre;
       return view('frontpage.productos.producto', $data);
