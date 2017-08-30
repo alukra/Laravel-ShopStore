@@ -546,8 +546,8 @@ Sucursal San Miguel<br>
 		data-splitout="none"
 		data-actions='[{"event":"click","action":"toggleclass","layer":"slide-36-layer-1","delay":"0","classname":"open"},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slide-36-layer-3","delay":"0"},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slide-36-layer-4","delay":"0"},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slide-36-layer-5","delay":"0"},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slide-36-layer-6","delay":"0"}]'
 		data-basealign="slide"
-		data-responsive_offset="off"
-		data-responsive="off"
+		data-responsive_offset="on"
+		data-responsive="on"
 		data-startslide="0"
 		data-endslide="3"
 
@@ -576,12 +576,12 @@ Sucursal San Miguel<br>
 		data-splitout="none"
 		data-actions='[{"event":"click","action":"toggleclass","layer":"slide-36-layer-7","delay":"0","classname":"open"},{"event":"click","action":"togglelayer","layerstatus":"visible","layer":"slide-36-layer-3","delay":""},{"event":"click","action":"togglelayer","layerstatus":"visible","layer":"slide-36-layer-4","delay":""},{"event":"click","action":"togglelayer","layerstatus":"visible","layer":"slide-36-layer-5","delay":""},{"event":"click","action":"togglelayer","layerstatus":"visible","layer":"slide-36-layer-6","delay":""}]'
 		data-basealign="slide"
-		data-responsive_offset="off"
+		data-responsive_offset="on"
 		data-responsive="off"
 		data-startslide="0"
 		data-endslide="3"
 
-		style="z-index: 6; min-width: 60px; max-width: 60px; max-width: 60px; max-width: 60px; white-space: nowrap; font-size: px; line-height: px; font-weight: 100;padding:22px 0px 0px 14px;border-color:rgba(51, 51, 51, 0.24);border-style:solid;border-width:1px;border-radius:50% 50% 50% 50%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
+		style="z-index: 6; min-width: 60px; max-width: 100%; white-space: nowrap; font-size: px; line-height: px; font-weight: 100;padding:22px 0px 0px 14px;border-color:rgba(51, 51, 51, 0.24);border-style:solid;border-width:1px;border-radius:50% 50% 50% 50%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
 		<span></span>
 		<span></span>
 		<span></span>
@@ -602,8 +602,8 @@ Sucursal San Miguel<br>
 		data-transform_out="auto:auto;s:1000;"
 		data-start="500"
 		data-basealign="slide"
-		data-responsive_offset="off"
-		data-responsive="off"
+		data-responsive_offset="on"
+		data-responsive="on"
 		data-startslide="0"
 		data-endslide="3"
 
@@ -630,8 +630,8 @@ Sucursal San Miguel<br>
 		data-splitout="none"
 		data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-251","delay":""},{"event":"click","action":"simulateclick","layer":"slide-36-layer-7","delay":"0"}]'
 		data-basealign="slide"
-		data-responsive_offset="off"
-		data-responsive="off"
+		data-responsive_offset="on"
+		data-responsive="on"
 		data-startslide="0"
 		data-endslide="3"
 		data-end="bytrigger"
@@ -659,8 +659,8 @@ Sucursal San Miguel<br>
 		data-splitout="none"
 		data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-252","delay":""},{"event":"click","action":"simulateclick","layer":"slide-36-layer-7","delay":"0"}]'
 		data-basealign="slide"
-		data-responsive_offset="off"
-		data-responsive="off"
+		data-responsive_offset="on"
+		data-responsive="on"
 		data-startslide="0"
 		data-endslide="3"
 		data-end="bytrigger"
@@ -688,8 +688,8 @@ Sucursal San Miguel<br>
 		data-splitout="none"
 		data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-254","delay":""},{"event":"click","action":"simulateclick","layer":"slide-36-layer-7","delay":"0"}]'
 		data-basealign="slide"
-		data-responsive_offset="off"
-		data-responsive="off"
+		data-responsive_offset="on"
+		data-responsive="on"
 		data-startslide="0"
 		data-endslide="3"
 		data-end="bytrigger"
@@ -717,8 +717,8 @@ Sucursal San Miguel<br>
 		data-splitout="none"
 		data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-254","delay":"0"},{"event":"click","action":"simulateclick","layer":"slide-36-layer-7","delay":"0"}]'
 		data-basealign="slide"
-		data-responsive_offset="off"
-		data-responsive="off"
+		data-responsive_offset="on"
+		data-responsive="on"
 		data-startslide="0"
 		data-endslide="3"
 		data-end="bytrigger"
