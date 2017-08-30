@@ -43,7 +43,7 @@
 					<ul class="list-inline right-topbar pull-right">
             {{-- <li><a href="shop-ui-add-to-cart.html">Cotizaciones (0)</a></li> --}}
             @if (Auth::check() )
-              <li><a href="{{ url('profile') }}">Cuenta</a></li>
+              <li><a href="{{ url('back/dashboard') }}">Cuenta</a></li>
               <li><a href="#" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">Logout</a></li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

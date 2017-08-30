@@ -180,7 +180,7 @@
 		data-responsive_offset="on"
 
 
-		style="z-index: 11; white-space: nowrap;">LIQUIDACIÓN<br><span style="color:#684fe1">ESPECIAL</span>
+		style="z-index: 11; white-space: nowrap;">{!! $landing->txtp1 !!}
 		</div>
 
 		<!-- LAYER NR. 8 -->
