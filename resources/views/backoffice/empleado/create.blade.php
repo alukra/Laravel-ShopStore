@@ -29,6 +29,8 @@
             <div class="form-group"><label>Email</label> <input type="email" placeholder="Correo" class="form-control" name="email"></div>
             <div class="form-group"><label>Nombre</label> <input type="text" placeholder="Nombre" class="form-control" name="nombre"></div>
             <div class="form-group"><label>Apellido</label> <input type="text" placeholder="Apellido" class="form-control" name="apellido"></div>
+            <div class="form-group"><label>Clave</label> <input type="password" placeholder="password" class="form-control" name="password"></div>
+            <div class="form-group"><label>Repetir clave</label> <input type="password" placeholder="password" class="form-control" name="password_confirmation"></div>
             <div class="form-group"><label>Télefono</label>
               <input type="text" placeholder="Télefono"  class="form-control" data-mask="(999)-9999-9999" name="telefono">
             </div>

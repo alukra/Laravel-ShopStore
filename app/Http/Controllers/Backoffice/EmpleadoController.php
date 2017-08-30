@@ -70,7 +70,8 @@ class EmpleadoController extends Controller{
         'direccion' => 'required|max:250',
         'genero' => 'required',
         'fecha_nacimiento' => 'required',
-        'rol' => 'required'
+        'rol' => 'required',
+        'password' => 'required|string|min:6|confirmed'
       ]);
 
       //Inicio de las inserciones en la base de datos
@@ -79,7 +80,7 @@ class EmpleadoController extends Controller{
           //Guardado de la cuenta del usuario
           $usuario = new User();
           $usuario->email = $request->email;
-          $usuario->password = bcrypt("empleadovaldez");
+          $usuario->password = bcrypt($request->password);
           $usuario->nombre = $request->nombre;
           $usuario->apellido = $request->apellido;
           $usuario->rol_id = $request->rol;
@@ -144,7 +145,8 @@ class EmpleadoController extends Controller{
         'direccion' => 'required|max:250',
         'genero' => 'required',
         'fecha_nacimiento' => 'required',
-        'rol' => 'required'
+        'rol' => 'required',
+        'password_confirmation' => 'required_with:password'
       ]);
 
       //Inicio de las inserciones en la base de datos
@@ -155,6 +157,9 @@ class EmpleadoController extends Controller{
           $usuario->nombre = $request->nombre;
           $usuario->apellido = $request->apellido;
           $usuario->rol_id = $request->rol;
+          if ($request->has('password')) {
+            $usuario->password = $request->password;
+          }
           $usuario->save();
 
           //Creación del empleado
