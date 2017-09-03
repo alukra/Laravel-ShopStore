@@ -38,6 +38,7 @@ class EmpleadoController extends Controller{
     $data['empleados'] = Empleado::select('Empleado.id', 'Users.nombre', 'apellido', 'Empleado.usuario_id', 'Rol.nombre as rol', 'telefono', 'email')
                           ->join('Users', 'Users.id', '=', 'Empleado.usuario_id')
                           ->join('Rol', 'Rol.id', '=', 'Users.rol_id')
+                          ->where('Users.id', '!=', '1')
                           ->get();
     return view('backoffice.empleado.index')->with($data);
   }
@@ -179,6 +180,16 @@ class EmpleadoController extends Controller{
         }
        DB::commit();
        return redirect('back/employee/' . $id  . "/edit");
+
+    }
+
+    public function destroy($id, Request $request){
+      $empleado = Empleado::find($id);
+      $usuario = User::find( $empleado->usuario_id );
+
+      $usuario->delete();
+      $empleado->delete();
+      return redirect('back/employee');
 
     }
 

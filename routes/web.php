@@ -34,8 +34,7 @@ Route::Resource('back/role', 'Backoffice\RolController', [
       'except' => ['destroy', 'create', 'edit'] ]);
 Route::get('back/role-module/asignar-rol', 'Backoffice\AsignarRolController@getAsignarRol');
 Route::post('back/role-module/asignar-rol', 'Backoffice\AsignarRolController@postAsignarRol');
-Route::Resource('back/employee', 'Backoffice\EmpleadoController', [
-      'except' => ['show', 'destroy'] ]);
+Route::Resource('back/employee', 'Backoffice\EmpleadoController');
 Route::Resource('back/detail', 'Backoffice\CaracteristicaController');
 Route::Resource('back/type-product', 'Backoffice\TipoController', [
       'except' => ['show', 'destroy'] ]);
@@ -54,3 +53,4 @@ Route::get('back/product-more/destroy-image/{id}/{imagen}', 'Backoffice\Producto
 Route::get('back/product-more/update-image/{id}/{imagen}', 'Backoffice\ProductoDetallesController@updateImage');
 Route::get('back/suscriber', 'Backoffice\DashboardController@getSuscribe');
 Route::Resource('back/landing', 'Backoffice\LandingController');
+Route::Resource('back/homepage', 'Backoffice\HomepageController');

@@ -33,6 +33,11 @@
                 <td>{{ $empleado->email }}</td>
                 <td>
                   <a class="btn btn-default" href="{{ url('back/employee/' .  $empleado->id . "/edit" ) }}"><i class="fa fa-pencil"></i></a>
+                  <form action="{{ url('back/employee/' . $empleado->id ) }}" method="post">
+                    {{ csrf_field() }}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button type="submit" name="button" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </form>
                 </td>
               </tr>
             @endforeach

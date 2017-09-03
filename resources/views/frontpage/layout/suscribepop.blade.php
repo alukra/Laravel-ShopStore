@@ -11,7 +11,7 @@
 					var js, fjs = d.getElementsByTagName(s)[0];
 					if (d.getElementById(id)) return;
 					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.4&appId=118547268248380";
+					js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.4&appId=118547268248380";
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));</script>
 				<div class="fb-like" data-href="https://www.facebook.com/valdezmobile/" data-width="270" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>

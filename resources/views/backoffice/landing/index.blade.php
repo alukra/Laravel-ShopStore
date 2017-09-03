@@ -19,6 +19,7 @@
             <tr>
               <th>Nombre</th>
               <th>Fecha Creación</th>
+              <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -28,9 +29,16 @@
                 <td>{{ $landing->nombre }}</td>
                 <td>{{ $landing->created_at }}</td>
                 <td>
+                  @if ($landing->estado == 1)
+                    <span class="label label-primary">Página Activa</span>
+                  @else
+                    <span class="label label-default">En edición</span>
+                  @endif
+                </td>
+                <td>
                   <a class="btn btn-default" href="{{ url('back/landing/' .  $landing->id . "/edit" ) }}"><i class="fa fa-pencil"></i></a>
                   @if ($landing->estado == 1)
-                    <a class="btn btn-primary" href="{{ url('back/landing/' .  $landing->id ) }}"><i class="fa fa-circle-o-notch"></i></a>
+                    <a class="btn btn-primary btn-disable"><i class="fa fa-circle-o-notch"></i></a>
                   @else
                     <a class="btn btn-default" href="{{ url('back/landing/' .  $landing->id ) }}"><i class="fa fa-circle-o-notch"></i></a>
                   @endif
