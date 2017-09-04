@@ -11,7 +11,7 @@
         <!-- SLIDE -->
         <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 1">
           <!-- MAIN IMAGE -->
-          <img src="{{ asset('frontpage/img/slider/Slider_principalF.png')}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+          <img src="{{ asset($slide1_img->url)}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 
           <div class="tp-caption revolution-ch3 sft start"
           data-x="left"
@@ -22,8 +22,8 @@
           data-easing="Back.easeInOut"
           data-endeasing="Power1.easeIn"
           data-endspeed="300">
-           <span class="tituloUno">Pregunta Por Nuestras</span><br>
-          <strong style="color: yellow">Liquidaciones</strong>
+           <span class="tituloUno">{{ $homepage->txt_ss1 }}</span><br>
+          <strong style="color: yellow">{{ $homepage->txt_ts1 }}</strong>
         </div>
 
         <!-- LAYER -->
@@ -46,7 +46,7 @@
     <!-- SLIDE -->
     <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
       <!-- MAIN IMAGE -->
-      <img src="{{ asset('frontpage/img/slider/Nueva-sucursal.png')}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+      <img src="{{ asset($slide2_img->url)}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 
       <div class="tp-caption revolution-ch3 sft start"
     	data-x="center"
@@ -57,8 +57,8 @@
     	data-easing="Back.easeInOut"
     	data-endeasing="Power1.easeIn"
     	data-endspeed="300">
-    	<span class="tituloDos">MUY PRONTO</span><br>
-    	<span class="subtituloUno">Una nueva forma de comprar</span>
+    	<span class="tituloDos">{{ $homepage->txt_ts2 }}</span><br>
+    	<span class="subtituloUno">{{$homepage->txt_ss2}}</span>
     </div>
 
   </li>
@@ -67,7 +67,7 @@
   <!-- SLIDE -->
   <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 3">
   <!-- MAIN IMAGE -->
-  <img src="{{ asset('frontpage/img/slider/Laptops-para-tu-carrera.png')}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="right top" data-bgrepeat="no-repeat">
+  <img src="{{ asset($slide3_img->url)}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="right top" data-bgrepeat="no-repeat">
 
   <div class="tp-caption revolution-ch1 sft start"
 	data-x="right"
@@ -78,7 +78,7 @@
 	data-easing="Back.easeInOut"
 	data-endeasing="Power1.easeIn"
 	data-endspeed="300">
-	<strong>Laptops</strong> para tu carrera
+	<strong>{{ $homepage->txt_ts3 }}</strong>
 	</div>
 
 	<!-- LAYER -->
@@ -93,7 +93,7 @@
 	data-endeasing="Power1.easeIn"
 	data-captionhidden="off"
 	style="z-index: 6">
-	<span class="tituloTres">Arquitectura Diseño Ingeniería Medicina</span>
+	<span class="tituloTres">{{ $homepage->txt_ss3 }}</span>
 	</div>
 
 	<!-- LAYER -->
@@ -225,25 +225,12 @@ style="z-index: 6">
   </div><!--/end cotnainer-->
 
   <!--=== Collection Banner ===-->
-  <div class="collection-banner">
+  <div class="collection-banner" style="background-image: url({{ $banner_img->url }}) ">
     <div class="container">
-      <div class="col-md-7 md-margin-bottom-50">
-        <h2>Garantia Extendida</h2>
-        <p>Duis in posuere risus. Vivamus sed dignissim tellus. In vehicula justo tempor commodo. <br> Nunc lobortis dapibus neque quis lacinia</p><br>
+      <div class="col-md-12 md-margin-bottom-50">
+        <h2>{{ $homepage->txt_bt }}</h2>
+        <p>{!! $homepage->txt_bs  !!}</p><br>
         <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-light">Pidela Ya</a>
-      </div>
-      <div class="col-md-5">
-        <div class="overflow-h">
-          <span class="percent-numb">50</span>
-          <div class="percent-off">
-            <span class="discount-percent">%</span>
-            <span class="discount-off">Menos</span>
-          </div>
-          <div class="new-offers shop-bg-green rounded-x">
-            <p>Nuevo</p>
-            <span>Servicio</span>
-          </div>
-        </div>
       </div>
     </div>
   </div>

@@ -18,6 +18,7 @@ use App\Models\Categoria;
 use App\Models\Imagen;
 use App\Models\Suscripcion;
 use App\Models\Marca;
+use App\Models\Homepage;
 
 
 class HomepageController extends Controller
@@ -26,6 +27,12 @@ class HomepageController extends Controller
       $data['tipos'] = Tipo::select('Tipo.*', 'url')
         ->join('Imagen', 'Imagen.id', 'imagen_id')
         ->limit(4)->get();
+
+      $data['homepage'] =  Homepage::where('estado', '=', 1)->first();
+      $data['slide1_img'] = Imagen::find( $data['homepage']->slide1_img_id );
+      $data['slide2_img'] = Imagen::find( $data['homepage']->slide2_img_id );
+      $data['slide3_img'] = Imagen::find( $data['homepage']->slide3_img_id );
+      $data['banner_img'] = Imagen::find( $data['homepage']->banner_img_id );
       $data['categorias'] = Categoria::select(DB::raw('Categoria.*, url,
             (SELECT count(Producto_categoria.id) FROM Producto
               INNER JOIN Producto_categoria ON Producto.id = producto_id

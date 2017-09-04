@@ -11,10 +11,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Helpers\General;
 
-use App\Models\Landing;
+use App\Models\Homepage;
 use App\Models\Imagen;
 
-class LandingController extends Controller
+class HomepageController extends Controller
 {
   public function __construct(){
       $this->middleware('auth');
@@ -24,221 +24,228 @@ class LandingController extends Controller
 
   public function index() {
     $data['user_perfil'] = Session()->get('perfil');
-    $data['page_title'] = "Landing page";
-    $data['landings'] = Landing::all();
-    return view('backoffice.landing.index')->with($data);
+    $data['page_title'] = "Homepage";
+    $data['homes'] = Homepage::all();
+    return view('backoffice.homepage.index')->with($data);
   }
 
   public function create(){
     $data['user_perfil'] = Session()->get('perfil');
-    $data['page_title'] = "Crear nueva página de promoción";
+    $data['page_title'] = "Crear nueva version de homepage";
 
-    return view('backoffice.landing.create', $data);
+    return view('backoffice.homepage.create', $data);
   }
 
   public function store(Request $request){
 
     $this->validate($request, [
-      'nombre' => 'max:32|required',
-      'celimg' => 'image|required',
-      'tabimg' => 'image|required',
-      'comimg' => 'image|required',
-      'img2' => 'image|required',
-      'txtp1' => 'required',
-      'txtp2' => 'required',
-      'txts1p1' => 'required',
-      'txts2p1' => 'required',
-      'txts1p2' => 'required',
-      'txts2p2' => 'required'
+      'slide1_img' => 'image|required',
+      'slide2_img' => 'image|required',
+      'slide3_img' => 'image|required',
+      'banner_img' => 'image|required',
+      'txt_ts1' => 'required',
+      'txt_ss1' => 'required',
+      'txt_ts2' => 'required',
+      'txt_ss2' => 'required',
+      'txt_ts3' => 'required',
+      'txt_ss3' => 'required',
+      'txt_bt' => 'required',
+      'txt_bs' => 'required',
     ]);
 
     //Inicio de las inserciones en la base de datos
     DB::beginTransaction();
       try {
         //Guardado de la cuenta del usuario
-        $landing = new Landing();
-        $landing->nombre = $request->nombre;
-        $landing->estado = 0;
-        $landing->txtp1 = $request->txtp1;
-        $landing->txts1p1 = $request->txts1p1;
-        $landing->txts2p1 = $request->txts2p1;
-        $landing->txtp2 = $request->txtp2;
-        $landing->txts1p2 = $request->txts1p2;
-        $landing->txts2p2 = $request->txts2p2;
-        $landing->save();
+        $homepage = new Homepage();
+        $homepage->estado = 0;
+        $homepage->txt_ts1 = $request->txt_ts1;
+        $homepage->txt_ss1 = $request->txt_ss1;
+        $homepage->txt_ts2 = $request->txt_ts2;
+        $homepage->txt_ss2 = $request->txt_ss2;
+        $homepage->txt_ts3 = $request->txt_ts3;
+        $homepage->txt_ss3 = $request->txt_ss3;
+        $homepage->txt_bt = $request->txt_bt;
+        $homepage->txt_bs = $request->txt_bs;
+        $homepage->save();
       } catch (\Exception $e) {
         DB::rollback();
         throw $e;
       }
 
-      $url = 'images/landing/landing'. $landing->id;
+      $url = 'images/homepage/homepage'. $homepage->id;
 
       //Nombres para imagenes a subir
-      $celimg = $landing->id . time() . 'celimg.' . $request->file('celimg')->getClientOriginalExtension();
-      $tabimg = $landing->id . time() . 'tabimg.' . $request->file('tabimg')->getClientOriginalExtension();
-      $comimg = $landing->id . time() . 'comimg.' . $request->file('comimg')->getClientOriginalExtension();
-      $img2 = $landing->id . time() . 'img2.' . $request->file('img2')->getClientOriginalExtension();
+      $slide1_img = $homepage->id . time() . 'sl1.' . $request->file('slide1_img')->getClientOriginalExtension();
+      $slide2_img = $homepage->id . time() . 'sl2.' . $request->file('slide2_img')->getClientOriginalExtension();
+      $slide3_img = $homepage->id . time() . 'sl3.' . $request->file('slide3_img')->getClientOriginalExtension();
+      $banner_img = $homepage->id . time() . 'ban.' . $request->file('banner_img')->getClientOriginalExtension();
 
-      if ($request->hasFile('celimg')) {
-        if ($request->file('celimg')->isValid()) {
-          $request->file('celimg')->move( base_path() . '/public/' . $url , $celimg );
-          $celimg_f = new Imagen();
-          $celimg_f->url = $url . '/' . $celimg;
-          $celimg_f->save();
+      if ($request->hasFile('slide1_img')) {
+        if ($request->file('slide1_img')->isValid()) {
+          $request->file('slide1_img')->move( base_path() . '/public/' . $url , $slide1_img );
+          $slide1_img_f = new Imagen();
+          $slide1_img_f->url = $url . '/' . $slide1_img;
+          $slide1_img_f->save();
 
-          $landing->celimg_id = $celimg_f->id;
-          $landing->save();
+          $homepage->slide1_img_id = $slide1_img_f->id;
+          $homepage->save();
         }
       }
 
-      if ($request->hasFile('tabimg')) {
-        if ($request->file('tabimg')->isValid()) {
-          $request->file('tabimg')->move( base_path() . '/public/' . $url , $tabimg );
-          $tabimg_f = new imagen();
-          $tabimg_f->url = $url . '/' . $tabimg;
-          $tabimg_f->save();
+      if ($request->hasFile('slide2_img')) {
+        if ($request->file('slide2_img')->isValid()) {
+          $request->file('slide2_img')->move( base_path() . '/public/' . $url , $slide2_img );
+          $slide2_img_f = new Imagen();
+          $slide2_img_f->url = $url . '/' . $slide2_img;
+          $slide2_img_f->save();
 
-          $landing->tabimg_id = $tabimg_f->id;
-          $landing->save();
+          $homepage->slide2_img_id = $slide2_img_f->id;
+          $homepage->save();
         }
       }
 
-      if ($request->hasFile('comimg')) {
-        if ($request->file('comimg')->isValid()) {
-          $request->file('comimg')->move( base_path() . '/public/' . $url , $comimg );
-          $comimg_f = new imagen();
-          $comimg_f->url = $url . '/' . $comimg;
-          $comimg_f->save();
+      if ($request->hasFile('slide3_img')) {
+        if ($request->file('slide3_img')->isValid()) {
+          $request->file('slide3_img')->move( base_path() . '/public/' . $url , $slide3_img );
+          $slide3_img_f = new Imagen();
+          $slide3_img_f->url = $url . '/' . $slide3_img;
+          $slide3_img_f->save();
 
-          $landing->comimg_id = $comimg_f->id;
-          $landing->save();
+          $homepage->slide3_img_id = $slide3_img_f->id;
+          $homepage->save();
         }
       }
 
-      if ($request->hasFile('img2')) {
-        if ($request->file('img2')->isValid()) {
-          $request->file('img2')->move( base_path() . '/public/' . $url , $img2 );
-          $img2_f = new imagen();
-          $img2_f->url = $url . '/' . $img2;
-          $img2_f->save();
+      if ($request->hasFile('banner_img')) {
+        if ($request->file('banner_img')->isValid()) {
+          $request->file('banner_img')->move( base_path() . '/public/' . $url , $banner_img );
+          $banner_img_f = new Imagen();
+          $banner_img_f->url = $url . '/' . $banner_img;
+          $banner_img_f->save();
 
-          $landing->img2_id = $img2_f->id;
-          $landing->save();
+          $homepage->banner_img_id = $banner_img_f->id;
+          $homepage->save();
         }
       }
+
+
      DB::commit();
-     return redirect('back/landing');
+     return redirect('back/homepage');
   }
 
 
   public function show($id){
-    Landing::where('estado', '=', 1)->update(['estado' => 0]);
-    $landing = Landing::find($id);
-    if ( $landing->estado == 1  ) {
-      $landing->estado = 0;
+    Homepage::where('estado', '=', 1)->update(['estado' => 0]);
+    $homepage = Homepage::find($id);
+    if ( $homepage->estado == 1  ) {
+      $homepage->estado = 0;
     }else{
-      $landing->estado =1;
+      $homepage->estado =1;
     }
-    $landing->save();
-    return redirect('back/landing');
+    $homepage->save();
+    return redirect('back/homepage');
   }
 
   public function edit($id){
     $data['user_perfil'] = Session()->get('perfil');
-    $data['page_title']  = "Editar landing";
-    $data['landing'] =  Landing::find($id);
-    $data['celimg'] = Imagen::find( $data['landing']->celimg_id );
-    $data['tabimg'] = Imagen::find( $data['landing']->tabimg_id );
-    $data['comimg'] = Imagen::find( $data['landing']->comimg_id );
-    $data['img2'] = Imagen::find( $data['landing']->img2_id );
-    if ($data['landing']  == null) { return redirect('back/landing'); } //Verificación para evitar errores
-    return view('backoffice.landing.edit', $data);
+    $data['page_title']  = "Editar homepage";
+    $data['homepage'] =  Homepage::find($id);
+    $data['slide1_img'] = Imagen::find( $data['homepage']->slide1_img_id );
+    $data['slide2_img'] = Imagen::find( $data['homepage']->slide2_img_id );
+    $data['slide3_img'] = Imagen::find( $data['homepage']->slide3_img_id );
+    $data['banner_img'] = Imagen::find( $data['homepage']->banner_img_id );
+    if ($data['homepage']  == null) { return redirect('back/homepage'); } //Verificación para evitar errores
+    return view('backoffice.homepage.edit', $data);
   }
 
     public function update($id, Request $request){    //Tablas a actualizar
       $this->validate($request, [
-        'nombre' => 'max:32|required',
-        'txtp1' => 'required',
-        'txtp2' => 'required',
-        'txts1p1' => 'required',
-        'txts2p1' => 'required',
-        'txts1p2' => 'required',
-        'txts2p2' => 'required'
+        'txt_ts1' => 'required',
+        'txt_ss1' => 'required',
+        'txt_ts2' => 'required',
+        'txt_ss2' => 'required',
+        'txt_ts3' => 'required',
+        'txt_ss3' => 'required',
+        'txt_bt' => 'required',
+        'txt_bs' => 'required',
       ]);
 
       //Inicio de las inserciones en la base de datos
       DB::beginTransaction();
         try {
           //Guardado de la cuenta del usuario
-          $landing = Landing::find( $id );
-          $landing->nombre = $request->nombre;
-          $landing->txtp1 = $request->txtp1;
-          $landing->txts1p1 = $request->txts1p1;
-          $landing->txts2p1 = $request->txts2p1;
-          $landing->txtp2 = $request->txtp2;
-          $landing->txts1p2 = $request->txts1p2;
-          $landing->txts2p2 = $request->txts2p2;
-          $landing->save();
+          $homepage = Homepage::find( $id );
+          $homepage->txt_ts1 = $request->txt_ts1;
+          $homepage->txt_ss1 = $request->txt_ss1;
+          $homepage->txt_ts2 = $request->txt_ts2;
+          $homepage->txt_ss2 = $request->txt_ss2;
+          $homepage->txt_ts3 = $request->txt_ts3;
+          $homepage->txt_ss3 = $request->txt_ss3;
+          $homepage->txt_bt = $request->txt_bt;
+          $homepage->txt_bs = $request->txt_bs;
+          $homepage->save();
         } catch (\Exception $e) {
           DB::rollback();
           throw $e;
         }
 
-        $url = 'images/landing/landing'. $landing->id;
+        $url = 'images/homepage/homepage'. $homepage->id;
 
-        if ($request->hasFile('celimg')) {
-          $celimg = $landing->id . time() . 'celimg.' . $request->file('celimg')->getClientOriginalExtension();
-          if ($request->file('celimg')->isValid()) {
-            $request->file('celimg')->move( base_path() . '/public/' . $url , $celimg );
-            $celimg_f = new Imagen();
-            $celimg_f->url = $url . '/' . $celimg;
-            $celimg_f->save();
 
-            $landing->celimg_id = $celimg_f->id;
-            $landing->save();
+        if ($request->hasFile('slide1_img')) {
+          $slide1_img = $homepage->id . time() . 'sl1.' . $request->file('slide1_img')->getClientOriginalExtension();
+          if ($request->file('slide1_img')->isValid()) {
+            $request->file('slide1_img')->move( base_path() . '/public/' . $url , $slide1_img );
+            $slide1_img_f = new Imagen();
+            $slide1_img_f->url = $url . '/' . $slide1_img;
+            $slide1_img_f->save();
+
+            $homepage->slide1_img_id = $slide1_img_f->id;
+            $homepage->save();
           }
         }
 
-        if ($request->hasFile('tabimg')) {
-          $tabimg = $landing->id . time() . 'tabimg.' . $request->file('tabimg')->getClientOriginalExtension();
-          if ($request->file('tabimg')->isValid()) {
-            $request->file('tabimg')->move( base_path() . '/public/' . $url , $tabimg );
-            $tabimg_f = new imagen();
-            $tabimg_f->url = $url . '/' . $tabimg;
-            $tabimg_f->save();
+        if ($request->hasFile('slide2_img')) {
+          $slide2_img = $homepage->id . time() . 'sl2.' . $request->file('slide2_img')->getClientOriginalExtension();
+          if ($request->file('slide2_img')->isValid()) {
+            $request->file('slide2_img')->move( base_path() . '/public/' . $url , $slide2_img );
+            $slide2_img_f = new Imagen();
+            $slide2_img_f->url = $url . '/' . $slide2_img;
+            $slide2_img_f->save();
 
-            $landing->tabimg_id = $tabimg_f->id;
-            $landing->save();
+            $homepage->slide2_img_id = $slide2_img_f->id;
+            $homepage->save();
           }
         }
 
-        if ($request->hasFile('comimg')) {
-          $comimg = $landing->id . time() . 'comimg.' . $request->file('comimg')->getClientOriginalExtension();
-          if ($request->file('comimg')->isValid()) {
-            $request->file('coming')->move( base_path() . '/public/' . $url , $coming );
-            $coming_f = new imagen();
-            $coming_f->url = $url . '/' . $coming;
-            $coming_f->save();
+        if ($request->hasFile('slide3_img')) {
+          $slide3_img = $homepage->id . time() . 'sl3.' . $request->file('slide3_img')->getClientOriginalExtension();
+          if ($request->file('slide3_img')->isValid()) {
+            $request->file('slide3_img')->move( base_path() . '/public/' . $url , $slide3_img );
+            $slide3_img_f = new Imagen();
+            $slide3_img_f->url = $url . '/' . $slide3_img;
+            $slide3_img_f->save();
 
-            $landing->coming_id = $coming_f->id;
-            $landing->save();
+            $homepage->slide3_img_id = $slide3_img_f->id;
+            $homepage->save();
           }
         }
 
-        if ($request->hasFile('img2')) {
-          $img2 = $landing->id . time() . 'img2.' . $request->file('img2')->getClientOriginalExtension();
-          if ($request->file('img2')->isValid()) {
-            $request->file('img2')->move( base_path() . '/public/' . $url , $img2 );
-            $img2 = new imagen();
-            $img2->url = $url . '/' . $img2;
-            $img2->save();
+        if ($request->hasFile('banner_img')) {
+          $banner_img = $homepage->id . time() . 'ban.' . $request->file('banner_img')->getClientOriginalExtension();
+          if ($request->file('banner_img')->isValid()) {
+            $request->file('banner_img')->move( base_path() . '/public/' . $url , $banner_img );
+            $banner_img_f = new Imagen();
+            $banner_img_f->url = $url . '/' . $banner_img;
+            $banner_img_f->save();
 
-            $landing->img2_id = $img2->id;
-            $landing->save();
+            $homepage->banner_img_id = $banner_img_f->id;
+            $homepage->save();
           }
         }
        DB::commit();
-       return redirect('back/landing/'. $id . "/edit");
+       return redirect('back/homepage/'. $id . "/edit");
     }
 
 }
